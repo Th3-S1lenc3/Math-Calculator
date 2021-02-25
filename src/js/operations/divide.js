@@ -1,20 +1,9 @@
 function displayOperation_divideMatrices() {
-  const executeOperationContainer = document.getElementById("execute-operation-container");
-  const containerInner = document.createElement('div');
-  containerInner.id = "execute-operation-container-inner";
-  containerInner.classList.add("execute-operation-container-inner");
+  const operationInput = document.getElementsByClassName('operationInput')[0];
 
-  const containerInner_Input = document.createElement('div');
-  containerInner_Input.id = "execute-operation-container-inner-input";
-  containerInner_Input.classList.add("operationInput", "border", "border-secondary", "rounded", "float-left");
+  const matrix1 = newDisplayMatrix(1, 2, 2);
 
-  const containerInner_Output = document.createElement('div');
-  containerInner_Output.id = "execute-operation-container-inner-output";
-  containerInner_Output.classList.add("operationOutput", "border", "border-secondary", "rounded", "float-right");
-
-  const matrix1 = newDisplayMatrix(1);
-
-  const matrix2 = newDisplayMatrix(2);
+  const matrix2 = newDisplayMatrix(2, 2, 2);
 
   const operator = document.createElement('p');
   operator.className = "specialOperator"
@@ -25,33 +14,17 @@ function displayOperation_divideMatrices() {
   btnExecute.addEventListener('click', executeOperation);
   btnExecute.textContent = 'Execute';
 
-  containerInner_Input.append(matrix1);
-  containerInner_Input.append(operator);
-  containerInner_Input.append(matrix2);
-  containerInner_Input.append(btnExecute);
-
-  containerInner.append(containerInner_Input);
-  containerInner.append(containerInner_Output);
-
-  executeOperationContainer.append(containerInner)
+  operationInput.append(matrix1);
+  operationInput.append(operator);
+  operationInput.append(matrix2);
+  operationInput.append(btnExecute);
   MathJax.typeset();
 }
 
 function displayOperation_scalarDivision() {
-  const executeOperationContainer = document.getElementById("execute-operation-container");
-  const containerInner = document.createElement('div');
-  containerInner.id = "execute-operation-container-inner";
-  containerInner.classList.add("execute-operation-container-inner");
+  const operationInput = document.getElementsByClassName('operationInput')[0];
 
-  const containerInner_Input = document.createElement('div');
-  containerInner_Input.id = "execute-operation-container-inner-input";
-  containerInner_Input.classList.add("operationInput", "border", "border-secondary", "rounded", "float-left");
-
-  const containerInner_Output = document.createElement('div');
-  containerInner_Output.id = "execute-operation-container-inner-output";
-  containerInner_Output.classList.add("operationOutput", "border", "border-secondary", "rounded", "float-right");
-
-  const matrix1 = newDisplayMatrix(1);
+  const matrix1 = newDisplayMatrix(1, 2, 2);
 
   const scalarInput = document.createElement('input');
   scalarInput.id = 'scalarInput';
@@ -67,20 +40,15 @@ function displayOperation_scalarDivision() {
   btnExecute.addEventListener('click', executeOperation);
   btnExecute.textContent = 'Execute';
 
-  containerInner_Input.append(scalarInput);
-  containerInner_Input.append(operator);
-  containerInner_Input.append(matrix1);
-  containerInner_Input.append(btnExecute);
-
-  containerInner.append(containerInner_Input);
-  containerInner.append(containerInner_Output);
-
-  executeOperationContainer.append(containerInner)
+  operationInput.append(matrix1);
+  operationInput.append(operator);
+  operationInput.append(scalarInput);
+  operationInput.append(btnExecute);
   MathJax.typeset();
 }
 
 function executeOperation_divideMatrices(showSteps) {
-  const destination = document.getElementById("execute-operation-container-inner-output");
+  const destination = document.getElementsByClassName("operationOutput")[0];
   destination.innerHTML = "";
 
   // Get Data
@@ -140,7 +108,7 @@ function executeOperation_divideMatrices(showSteps) {
   newMatrix[1][0] = matrix1[1][0] * newMatrix2[0][0] + matrix1[1][1] * newMatrix2[1][0];
   newMatrix[1][1] = matrix1[1][0] * newMatrix2[0][1] + matrix1[1][1] * newMatrix2[1][1];
 
-  // Check if original matrix * inverse matrix = identity matrix
+  // Check if new matrix * second matrix = first matrix
 
   var verificationMatrix = newExecuteMatrix(2, 2);
   verificationMatrix[0][0] = newMatrix[0][0] * matrix2[0][0] + newMatrix[0][1] * matrix2[1][0];
@@ -150,7 +118,8 @@ function executeOperation_divideMatrices(showSteps) {
 
   if (verificationMatrix[0][0] != matrix1[0][0] || verificationMatrix[0][1] != matrix1[0][1] || verificationMatrix[1][0] != matrix1[1][0] || verificationMatrix[1][1] != matrix1[1][1]) {
       console.info(verificationMatrix);
-      throw "Inverse matrix did not return identity matrix";
+      destination.innerHTML = "Inverse matrix did not return identity matrix";
+      return;
   }
 
   // Show Output
@@ -287,7 +256,7 @@ function executeOperation_divideMatrices(showSteps) {
 }
 
 function executeOperation_scalarDivision(showSteps) {
-  const destination = document.getElementById("execute-operation-container-inner-output");
+  const destination = document.getElementsByClassName("operationOutput")[0];
   destination.innerHTML = "";
 
   const matrices = getMatrices();
@@ -310,11 +279,11 @@ function executeOperation_scalarDivision(showSteps) {
 
   if (showSteps) {
       destination.innerHTML += "$$\r Convert\\ to\\ multiplication: $$";
-      destination.innerHTML += "$$ " + scalarNormal + "\\div";
-      destination.innerHTML += "\\begin{pmatrix}";
+      destination.innerHTML += "$$\\begin{pmatrix}";
       destination.innerHTML += ifDecimalC2Fraction(matrix1[0][0]) + "&" + ifDecimalC2Fraction(matrix1[0][1]) + "\\\\";
       destination.innerHTML += ifDecimalC2Fraction(matrix1[1][0]) + "&" + ifDecimalC2Fraction(matrix1[1][1]) + "\\\\";
-      destination.innerHTML += "\\end{pmatrix} =";
+      destination.innerHTML += "\\end{pmatrix} \\div";
+      destination.innerHTML += ifDecimalC2Fraction(scalarNormal) + " = "
       destination.innerHTML += ifDecimalC2Fraction(scalarNormal) + "^{-1} \\cdot";
       destination.innerHTML += "\\begin{pmatrix}";
       destination.innerHTML += ifDecimalC2Fraction(matrix1[0][0]) + "&" + ifDecimalC2Fraction(matrix1[0][1]) + "\\\\";
@@ -346,11 +315,11 @@ function executeOperation_scalarDivision(showSteps) {
   }
 
   destination.innerHTML += "$$\r Result: $$";
-  destination.innerHTML += "$$ " + ifDecimalC2Fraction(scalarNormal) + "\\div";
-  destination.innerHTML += "\\begin{pmatrix}";
+  destination.innerHTML += "$$\\begin{pmatrix}";
   destination.innerHTML += ifDecimalC2Fraction(matrix1[0][0]) + "&" + ifDecimalC2Fraction(matrix1[0][1]) + "\\\\";
   destination.innerHTML += ifDecimalC2Fraction(matrix1[1][0]) + "&" + ifDecimalC2Fraction(matrix1[1][1]) + "\\\\";
-  destination.innerHTML += "\\end{pmatrix} = ";
+  destination.innerHTML += "\\end{pmatrix} \\div ";
+  destination.innerHTML += ifDecimalC2Fraction(scalarNormal) + " = ";
   destination.innerHTML += "\\begin{pmatrix}";
   destination.innerHTML += ifDecimalC2Fraction(newMatrix[0][0]) + "&" + ifDecimalC2Fraction(newMatrix[0][1]) + "\\\\";
   destination.innerHTML += ifDecimalC2Fraction(newMatrix[1][0]) + "&" + ifDecimalC2Fraction(newMatrix[1][1]) + "\\\\";

@@ -4,10 +4,9 @@ Simple calculator for matrix operations created with Node.js and Electron.
 
 # Table of contents
 
-- [General Inforamation](#generalinformation)
+- [General Information](#generalinformation)
 - [Technologies](#technologies)
-- [Installation](#installation)
-- [Usage](#usage)
+- [Installation & Usage](#installation&usage)
 - [License](#license)
 
 # General Information
@@ -24,7 +23,7 @@ Project is created with:
 - Jquery: 3.5.1
 - MathJax: 3.1.2
 
-# Installation
+# Installation & Usage
 [Back to top](#table-of-contents)
 
 1. Download the pre-complied binary from the releases page.
@@ -33,16 +32,15 @@ Project is created with:
 $ git clone https://github.com/Th3-S1lenc3/Matrix-Calculator.git
 $ cd Matrix-Calculator
 $ npm install
-```
-
-# Usage
-
-
-```
 $ npm start
 ```
 
+# Contributing
+[Back to top](#table-of-contents)
+
+See [CONTRIBUTING](CONTRIBUTING) for details
 
 # License
+[Back to top](#table-of-contents)
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the MIT License - see [LICENSE](LICENSE) for details

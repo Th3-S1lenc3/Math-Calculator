@@ -63,10 +63,6 @@ html, body {
     width: 67px !important;
 }
 
-.matrixBracket {
-    transform: scale(1.2, 4) translateY(-1.8px);
-}
-
 .operationOutput {
     grid-column: 1;
     grid-row: 2;

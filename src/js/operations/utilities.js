@@ -1,7 +1,4 @@
-function newDisplayMatrix(id_num) {
-  const rows = 2;
-  const cols = 2;
-
+function newDisplayMatrix(id_num, rows, cols) {
   const matrix = document.createElement('table');
   matrix.className = 'matrix';
   const matrixBody = document.createElement('tbody');
@@ -14,8 +11,8 @@ function newDisplayMatrix(id_num) {
 
       if (i == 1) {
           const matrixCol = document.createElement('td');
-          matrixCol.className = 'matrixBracket';
-          matrixCol.rowSpan = '2';
+          matrixCol.style = 'transform: scale(1.2, '+ rows * 2 +') translateY(-0.8px);';
+          matrixCol.rowSpan = rows;
           matrixCol.innerHTML = '(';
           matrixRow.appendChild(matrixCol);
       }
@@ -35,8 +32,8 @@ function newDisplayMatrix(id_num) {
 
       if (i == 1) {
           const matrixCol = document.createElement('td');
-          matrixCol.className = 'matrixBracket';
-          matrixCol.rowSpan = '2';
+          matrixCol.style = 'transform: scale(1.2, '+ rows * 2 +') translateY(-0.8px);';
+          matrixCol.rowSpan = rows;
           matrixCol.innerHTML = ')';
 
           matrixRow.appendChild(matrixCol);
@@ -61,19 +58,17 @@ function newExecuteMatrix(rows, cols) {
 
   // Creates all lines:
   for (var i = 0; i < rows; i++) {
+    // Creates an empty line
+    arr.push([]);
 
-      // Creates an empty line
-      arr.push([]);
+    // Adds cols to the empty line:
+    arr[i].push(new Array(cols));
 
-      // Adds cols to the empty line:
-      arr[i].push(new Array(cols));
-
-      for (var j = 0; j < cols; j++) {
-          // Initializes:
-          arr[i][j] = defaultValue;
-      }
+    for (var j = 0; j < cols; j++) {
+        // Initializes:
+        arr[i][j] = defaultValue;
+    }
   }
-
   return arr;
 }
 

@@ -1,20 +1,9 @@
 function displayOperation_subtractMatrices() {
-  const executeOperationContainer = document.getElementById("execute-operation-container");
-  const containerInner = document.createElement('div');
-  containerInner.id = "execute-operation-container-inner";
-  containerInner.classList.add("execute-operation-container-inner");
+  const operationInput = document.getElementsByClassName('operationInput')[0];
 
-  const containerInner_Input = document.createElement('div');
-  containerInner_Input.id = "execute-operation-container-inner-input";
-  containerInner_Input.classList.add("operationInput", "border", "border-secondary", "rounded", "float-left");
+  const matrix1 = newDisplayMatrix(1, 2, 2);
 
-  const containerInner_Output = document.createElement('div');
-  containerInner_Output.id = "execute-operation-container-inner-output";
-  containerInner_Output.classList.add("operationOutput", "border", "border-secondary", "rounded", "float-right");
-
-  const matrix1 = newDisplayMatrix(1);
-
-  const matrix2 = newDisplayMatrix(2);
+  const matrix2 = newDisplayMatrix(2, 2, 2);
 
   const operator = document.createElement('p');
   operator.className = "operator"
@@ -25,19 +14,14 @@ function displayOperation_subtractMatrices() {
   btnExecute.addEventListener('click', executeOperation);
   btnExecute.textContent = 'Execute';
 
-  containerInner_Input.append(matrix1);
-  containerInner_Input.append(operator);
-  containerInner_Input.append(matrix2);
-  containerInner_Input.append(btnExecute);
-
-  containerInner.append(containerInner_Input);
-  containerInner.append(containerInner_Output);
-
-  executeOperationContainer.append(containerInner)
+  operationInput.append(matrix1);
+  operationInput.append(operator);
+  operationInput.append(matrix2);
+  operationInput.append(btnExecute);
 }
 
 function executeOperation_subtractMatrices(showSteps) {
-  const destination = document.getElementById("execute-operation-container-inner-output");
+  const destination = document.getElementsByClassName("operationOutput")[0];
   destination.innerHTML = "";
 
   const matrices = getMatrices();
