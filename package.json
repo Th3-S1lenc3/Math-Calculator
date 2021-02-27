@@ -1,6 +1,6 @@
 {
   "name": "matrix-calculator",
-  "productName": "Matrix Calculator",
+  "productName": "matrix-calculator",
   "version": "1.1.0",
   "description": "Matrix calculator",
   "main": "src/app.js",
