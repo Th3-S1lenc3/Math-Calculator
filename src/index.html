@@ -24,28 +24,30 @@
 </head>
 <body class="main">
   <div class="select-operation-container border border-secondary rounded pl-1">
-      <select class="select-operation mr-auto ml-1">
-          <option selected hidden>Select an operation</option>
-          <option value="addMatrices">Add Matrices</option>
-          <option value="subtractMatrices">Subtract Matrices</option>
-          <optgroup label="Multiply">
-              <option value="multiplyMatrices">Multiply Matrices</option>
-              <option value="scalarMultiplication">Multiply matrix by scalar</option>
-          </optgroup>
-          <optgroup label="Divide">
-              <option value="divideMatrices">Divide Matrices</option>
-              <option value="scalarDivision">Divide matrix by scalar</option>
-          </optgroup>
-          <optgroup label="Other">
-            <option value="invertMatrix">Invert Matrix</option>
-            <option value="transposeMatrix">Transpose Matrix</option>
-            <option value="linearEquations">Solve Systems of Linear Equations</option>
-          </optgroup>
-      </select>
-      <select class="operation-detail ml-auto mr-1">
-          <option selected>Hide Steps</option>
-          <option>Show Steps</option>
-      </select>
+    <select class="select-operation mr-auto ml-1">
+      <option selected hidden>Select an operation</option>
+      <optgroup label="General">
+        <option value="addMatrices">Add Matrices</option>
+        <option value="subtractMatrices">Subtract Matrices</option>
+      </optgroup>
+      <optgroup label="Multiply">
+          <option value="multiplyMatrices">Multiply Matrices</option>
+          <option value="scalarMultiplication">Multiply matrix by scalar</option>
+      </optgroup>
+      <optgroup label="Divide">
+          <option value="divideMatrices">Divide Matrices</option>
+          <option value="scalarDivision">Divide matrix by scalar</option>
+      </optgroup>
+      <optgroup label="Other">
+        <option value="invertMatrix">Invert Matrix</option>
+        <option value="transposeMatrix">Transpose Matrix</option>
+        <option value="linearEquations">Solve Systems of Linear Equations</option>
+      </optgroup>
+    </select>
+    <select class="operation-detail ml-auto mr-1">
+      <option selected>Hide Steps</option>
+      <option>Show Steps</option>
+    </select>
   </div>
   <div class="execute-operation-container">
     <div class="execute-operation-container-inner">

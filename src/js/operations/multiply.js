@@ -65,16 +65,34 @@ function executeOperation_multiplyMatrices(showSteps) {
   const matrix2_rows = matrix2.length;
   const matrix2_cols = matrix2[0].length;
 
-  if (matrix1_rows != matrix2_cols || matrix1_cols != matrix2_rows) {
-    destination.innerHTML = "Invalid Operation. To multiply matrices they must have the same number of rows as columns.";
+  // Check if we can multiply
+  if (matrix1_cols != matrix2_rows) {
+    destination.innerHTML = "Invalid Operation. To multiply matrices, the number of columns in the first matrix must equal the rows of the second matrix";
     return;
   }
 
-  var newMatrix = newExecuteMatrix(rows, cols);
-  newMatrix[0][0] = matrix1[0][0] * matrix2[0][0] + matrix1[0][1] * matrix2[1][0];
-  newMatrix[0][1] = matrix1[0][0] * matrix2[0][1] + matrix1[0][1] * matrix2[1][1];
-  newMatrix[1][0] = matrix1[1][0] * matrix2[0][0] + matrix1[1][1] * matrix2[1][0];
-  newMatrix[1][1] = matrix1[1][0] * matrix2[0][1] + matrix1[1][1] * matrix2[1][1];
+  // New matrix = rows of matrix 1 x columns of matrix 2
+
+  var newMatrix = [];
+  for (let i = 0; i < matrix1_rows; i++) {
+    newMatrix.push([]);
+  }
+
+  var tmpValue;
+  for (let r = 0; r < matrix1_rows; r++) {
+    console.log(tmpValue);
+    tmpValue = 0;
+    console.log(tmpValue);
+    for (let col = 0; col < matrix2_cols; col++) {
+      tmpValue = 0;
+      for (let c = 0; c < matrix2_cols; c++) {
+        tmpValue += matrix1[r][c] * matrix2[c][col];
+        console.log("tmpValue: " + tmpValue);
+      }
+      newMatrix[r].push(tmpValue);
+    }
+  }
+  console.info(newMatrix);
 
   if (showSteps) {
       destination.innerHTML += "$$\r Multiply\\ the\\ rows\\ of\\ the\\ first\\ matrix\\ by\\ the\\ columns\\ of\\ the\\ second\\ matrix: $$";

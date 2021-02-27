@@ -34,7 +34,7 @@ function executeOperation() {
       case "transposeMatrix":
         executeOperation_transposeMatrix(showSteps);
         break;
-      case "simultaneousEquations":
+      case "linearEquations":
         executeOperation_linearEquations(showSteps);
         break;
   }

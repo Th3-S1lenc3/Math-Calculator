@@ -1,6 +1,7 @@
 function displayOperation() {
-  const selectedOperation = document.getElementsByClassName("select-operation")[0].value
-  document.getElementsByClassName("operationInput")[0].innerHTML = ""
+  const selectedOperation = document.getElementsByClassName("select-operation")[0].value;
+  document.getElementsByClassName("operationInput")[0].innerHTML = "";
+  document.getElementsByClassName("operationOutput")[0].innerHTML = "";
 
   switch (selectedOperation) {
       case "addMatrices":
