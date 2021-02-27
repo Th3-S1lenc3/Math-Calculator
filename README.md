@@ -1,6 +1,6 @@
 # Matrix Calculator
 
-Simple calculator for matrix operations created with Node.js and Electron.
+Calculator for matrix operations created with Node.js and Electron.
 
 # Table of contents
 
@@ -22,6 +22,7 @@ Project is created with:
 - Fraction.js: 4.0.13
 - Jquery: 3.5.1
 - MathJax: 3.1.2
+- Electron: 11.2.3
 
 # Installation & Usage
 [Back to top](#table-of-contents)
@@ -34,11 +35,6 @@ $ cd Matrix-Calculator
 $ npm install
 $ npm start
 ```
-
-# Contributing
-[Back to top](#table-of-contents)
-
-See [CONTRIBUTING](CONTRIBUTING) for details
 
 # License
 [Back to top](#table-of-contents)
