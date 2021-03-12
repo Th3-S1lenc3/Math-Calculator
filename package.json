@@ -1,57 +1,42 @@
 {
-  "name": "matrix-calculator",
-  "productName": "matrix-calculator",
-  "version": "1.1.0",
-  "description": "Matrix calculator",
-  "main": "src/app.js",
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "make-win": "electron-builder --win=portable",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
-  },
-  "keywords": [],
-  "author": "Th3_S1lenc3",
-  "license": "MIT",
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "matrix_calculator"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        }
-      ]
-    }
-  },
+  "name": "math-calculator",
+  "version": "2.0.0-alpha",
   "dependencies": {
+    "better-react-mathjax": "^0.0.14-beta",
     "bootstrap": "^4.6.0",
+    "concurrently": "^5.3.0",
+    "electron": "^11.2.3",
+    "electron-builder": "^22.9.1",
+    "electron-is-dev": "^1.2.0",
+    "electron-remote": "^1.3.0",
     "electron-squirrel-startup": "^1.0.0",
     "fraction.js": "^4.0.13",
     "jquery": "^3.5.1",
-    "mathjax": "^3.1.2"
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.5.0",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.2",
+    "wait-on": "^5.2.1"
   },
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.54",
-    "@electron-forge/maker-deb": "^6.0.0-beta.54",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
-    "@electron-forge/maker-zip": "^6.0.0-beta.54",
-    "electron": "^11.2.3",
-    "electron-builder": "^22.9.1"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"BROWSER=none npm run start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "main": "public/main.js",
+  "homepage": "./",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

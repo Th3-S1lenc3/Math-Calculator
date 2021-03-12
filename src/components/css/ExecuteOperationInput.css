@@ -1,0 +1,40 @@
+.operationInput-Container {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.operationInput {
+  width: 100%;
+  height: 100%;
+  display: flex !important;
+  align-items: center;
+}
+
+.operator {
+  font-size: 24px;
+  transform: translateY(6px);
+}
+
+.specialOperator {
+  font-size: 21px;
+  transform: translateY(9px);
+}
+
+.matrix {
+  width: 153px !important;
+}
+
+.matrixInput {
+  width: 67px !important;
+}
+
+.scalarInput {
+  width: 153px !important;
+}
+
+.equation-input{
+  width: 90px;
+  min-width: 90px;
+  max-width: 300px;
+  transition: width 0.25s;
+}
