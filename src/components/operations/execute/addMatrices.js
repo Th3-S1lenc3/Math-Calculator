@@ -39,7 +39,7 @@ export default class AddMatrices extends Component {
         }
       }
 
-      if (showSteps == 'true') {
+      if (showSteps) {
         if (i == 1) {
           outputTmp = (
             <p key={key + 1}>$$Add\ the\ elements\ in\ the\ matching\ positions\ on\ the\ {ordinal_suffix_of(1)}\ and\ {ordinal_suffix_of(2)}\ matrix: $$</p>

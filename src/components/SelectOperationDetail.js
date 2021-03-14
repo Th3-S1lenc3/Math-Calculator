@@ -13,7 +13,7 @@ export default class SelectOperationDetail extends Component {
     return (
       <div className={classes}>
         <select onChange={() => {
-          const target = { name: 'showSteps', value: event.target.value };
+          const target = { name: 'showSteps', value: eval(event.target.value) };
           {setContext(target)}
         }} className="custom-select custom-select-sm">
           <option value='false' defaultValue>Hide Steps</option>

@@ -4,6 +4,7 @@ import { MathJax } from 'better-react-mathjax';
 import { OperationContext } from '../../OperationContext';
 import { getMatrices, newExecuteMatrix, ifDecimalC2Fraction, flipSign, ordinal_suffix_of, copy, getDeterminant } from '../utilities/utils';
 import DisplayMatrix from '../utilities/DisplayMatrix';
+import DisplayArray from '../utilities/DisplayArray';
 
 export default class InvertMatrix extends Component {
   static contextType = OperationContext;
@@ -31,7 +32,7 @@ export default class InvertMatrix extends Component {
       return output;
     }
 
-    if (showSteps == 'true') {
+    if (showSteps) {
       outputTmp = (
         <p key={key + 2}>$$Check\ if\ the\ determinant\ of\ the\ matrix\ is\ not\ 0:$$</p>
       )
@@ -40,22 +41,24 @@ export default class InvertMatrix extends Component {
 
     let determinant = getDeterminant(matrix);
 
-    outputTmp = (
-      <p key={key + 0}>$$
-        A = <DisplayMatrix rows={rows} columns={columns} matrix={matrix}/>
-      $$</p>
-    )
-    output.push(outputTmp);
+    if (showSteps) {
+      outputTmp = (
+        <p key={key + 0}>$$
+          A = <DisplayMatrix rows={rows} columns={columns} matrix={matrix}/>
+        $$</p>
+      )
+      output.push(outputTmp);
 
-    outputTmp = (
-      <p key={key + 1}>$$
-        det(A) =
-        <DisplayMatrix rows={rows} columns={columns} matrix={matrix} type={'vmatrix'}/> =
-        {ifDecimalC2Fraction(determinant)}
-      $$</p>
-    )
+      outputTmp = (
+        <p key={key + 1}>$$
+          det(A) =
+          <DisplayMatrix rows={rows} columns={columns} matrix={matrix} type={'vmatrix'}/> =
+          {ifDecimalC2Fraction(determinant)}
+        $$</p>
+      )
 
-    output.push(outputTmp);
+      output.push(outputTmp);
+    }
 
     if (determinant == 0) {
       outputTmp = (
@@ -64,7 +67,7 @@ export default class InvertMatrix extends Component {
       output.push(outputTmp);
       return output;
     }
-    else if (showSteps == 'true') {
+    else if (showSteps) {
       outputTmp = (
         <p key={key + 3}>$$The\ determinant\ of\ the\ matrix\ is\ not\ 0\ therefore\ an\ inverse\ exists.$$</p>
       )
@@ -118,7 +121,7 @@ export default class InvertMatrix extends Component {
       }
     }
 
-    if (showSteps == 'true') {
+    if (showSteps) {
       outputTmp = (
         <p key={key + 4}>$$Invert\ the\ matrix:$$</p>
       )
@@ -130,6 +133,8 @@ export default class InvertMatrix extends Component {
           \xrightarrow{`{\\text{Augment}}`}
           <DisplayArray rows={rows} columns={newColumns} matrix={augmentedMatrixOriginal} splitPoint={columns} separator={'|'} />
           \xrightarrow{`{\\text{Gaussian Elimination}}`}
+          <DisplayArray rows={rows} columns={newColumns} matrix={augmentedMatrix} splitPoint={columns} separator={'|'} />
+          \xrightarrow{`{\\text{Extract Inverted Matrix}}`}
           <DisplayMatrix rows={rows} columns={columns} matrix={matrix} />
         $$</p>
       )

@@ -6,15 +6,32 @@ import { OperationContext } from './OperationContext';
 
 import SelectOperation from './SelectOperation';
 import SelectOperationDetail from './SelectOperationDetail';
-import BtnExecute from './BtnExecute';
+import BtnCalculate from './BtnCalculate';
 import ListMatrices from './ListMatrices';
+
+const lists = {
+  listMatrices: ListMatrices,
+  listEquations: ListEquations,
+  listDice: ListDice,
+  listNumbers: ListNumbers,
+  default: null,
+}
 
 export default class SelectOperationContainer extends Component {
   static contextType = OperationContext;
 
   render() {
     const classes = 'select-operation-container navbar navbar-expand-md navbar-dark bg-dark fixed-left';
-    const { setContext, showMatrixOperations } = this.context;
+    const { setContext, showMatrixOperations, type } = this.context;
+
+    let List;
+
+    if (showMatrixOperations) {
+      List = lists['listMatrices'];
+    }
+    else if (type.includes('Equations')) {
+      List = lists['listEquations'];
+    }
 
     return (
       <nav className={classes}>
@@ -33,11 +50,11 @@ export default class SelectOperationContainer extends Component {
               </li>
               <li className="nav-item"><SelectOperation /></li>
               <li className="nav-item"><SelectOperationDetail /></li>
-              <li className="nav-item"><BtnExecute /></li>
+              <li className="nav-item"><BtnCalculate /></li>
             </div>
             <div className="matrices">
               <a className="navbar-brand">Matrices</a>
-              <ListMatrices />
+              <List />
             </div>
           </ul>
         </div>

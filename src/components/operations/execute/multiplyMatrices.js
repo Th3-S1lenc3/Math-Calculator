@@ -64,7 +64,7 @@ export default class MultiplyMatrices extends Component {
         }
       }
 
-      if (showSteps == 'true') {
+      if (showSteps) {
         if (i == 1) {
           outputTmp = (
             <p key={key + 1}>$$Multiply\ the\ rows\ of\ the\ {ordinal_suffix_of(1)}\ matrix\ by\ the\ columns\ of\ the\ {ordinal_suffix_of(2)}\ matrix: $$</p>

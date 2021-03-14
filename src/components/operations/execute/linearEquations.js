@@ -71,7 +71,7 @@ export default class LinearEquations extends Component {
               output.push(outputTmp);
               return output;
             }
-            else if (showSteps == 'true'){
+            else if (showSteps){
               outputTmp = (
                 <p key={key + 4}>\(Given\ that\ all\ unknowns\ equal\ 0,\ with\ a\ non-zero\ constant,\)</p>
               );
@@ -94,7 +94,7 @@ export default class LinearEquations extends Component {
       }
     }
 
-    if (showSteps == 'true') {
+    if (showSteps) {
       outputTmp = (
         <p key={key + 2}>\(Put\ equations\ into\ augmented\ matrix\ then\ perform\ gaussian\ elimination:\)</p>
       );
@@ -155,7 +155,7 @@ export default class LinearEquations extends Component {
       output.push(outputTmp);
       return output;
     }
-    else if (showSteps == 'true') {
+    else if (showSteps) {
       outputTmp = (
         <p key={key + 7}>\(Verify\ x\ and\ y\ are\ correct:\)</p>
       );

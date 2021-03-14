@@ -26,6 +26,104 @@ export function getScalar() {
   return Number(document.querySelector('.scalarInput').value);
 }
 
+export function getLinearEquationsAsAugmentedMatrix() {
+  const equationTable = document.querySelector('.equationTable');
+  const equations = equationTable.querySelectorAll('.equation-row');
+  const variableCount = equations[0].querySelectorAll('.equation-variable');
+
+  let value;
+  let augmentedMatrix = newExecuteMatrix(equations.length, variableCount.length);
+
+  for (let e = 1; e <= equations.length; e++) {
+    console.log("equation-" + e);
+    let equation = equations[e - 1];
+    let variables = equations[e - 1].querySelectorAll('.equation-variable');
+    let operators = equations[e - 1].querySelectorAll('.equation-operator');
+    for (let v = 1; v <= variables.length; v++) {
+        console.log("variable-" + v);
+        let variable = variables[v - 1];
+        let value = Number(variable.children[0].value);
+        if (v != 1) {
+          let variableID = variable.id.split('-')[1];
+          let operatorIndex = variableID - 1;
+          let operatorsArray = Array.from(operators);
+          let operator = operatorsArray.find(element => element.id.toString().includes(operatorIndex));
+          if (operator.children[0].selectedOptions[0].innerText == "-") {
+            augmentedMatrix[e - 1][v - 1] = -value ? -value : -1;
+          }
+          else {
+            augmentedMatrix[e - 1][v - 1] = value ? value : 1;
+          }
+        }
+        else {
+          augmentedMatrix[e - 1][v - 1] = value ? value : 1;
+        }
+    }
+    let constant = equations[e - 1].querySelector('.equation-constant');
+    augmentedMatrix[e - 1].push(Number(constant.children[0].value));
+  }
+  return augmentedMatrix;
+}
+
+export function parseLinearEquationToDisplayString() {
+  const equationTable = document.querySelector('.equationTable');
+  const equations = equationTable.querySelectorAll('.equation-row');
+  const variableCount = equations[0].querySelectorAll('.equation-variable');
+
+  let displayString = "\\begin{array}{r}";
+
+  for (let e = 1; e <= equations.length; e++) {
+    console.log("equation-" + e);
+    let equation = equations[e - 1];
+    let variables = equations[e - 1].querySelectorAll('.equation-variable');
+    let operators = equations[e - 1].querySelectorAll('.equation-operator');
+    let char = equations[e - 1].querySelectorAll('.equation-char');
+    for (let v = 1; v <= variables.length; v++) {
+      console.log("variable-" + v);
+      console.log("char-" + v);
+      let value = Number(variables[v - 1].children[0].value)
+      displayString += ifDecimalC2Fraction(value ? value : 1);
+      displayString += char[v - 1].innerText;
+      if (v != variables.length) {
+        let operator = operators[v - 1].children[0].selectedOptions[0].innerText;
+        if (operator == "x" || operator == "÷") {
+          switch (operator) {
+            case 'x':
+              operator = '\\cdot';
+              break;
+            case '÷':
+              operator = '\\div';
+              break;
+          }
+        }
+        displayString += operator;
+      }
+    }
+    let constant = equations[e - 1].querySelector('.equation-constant').children[0].value;
+    displayString += " = " + ifDecimalC2Fraction(constant) + "\\\\";
+  }
+  displayString += "\\end{array}";
+  return displayString;
+}
+
+export function getFibonacciBounds() {
+  let output = [];
+  let bounds = document.querySelectorAll('.scalarInput');
+
+  for (let i = 0; i < bounds.length; i++) {
+    output.push(Number(bounds[i].value))
+  }
+
+  console.log(output);
+  return output;
+}
+
+export function fibonacci(n) {
+  let sqrt5 = Math.sqrt(5);
+  let fib_n = ( Math.pow((1 + sqrt5), n) - Math.pow((1-sqrt5), -n)) / ( Math.pow(2, n) * sqrt5 );
+  return Math.round(fib_n);
+}
+
 export function ifDecimalC2Fraction(x) {
   if (Number.isNaN(Number(x))) {
     return x;
@@ -114,86 +212,6 @@ export function ordinal_suffix_of(i) {
 
 export function copy(x) {
   return JSON.parse(JSON.stringify(x));
-}
-
-export function getLinearEquationsAsAugmentedMatrix() {
-  const equationTable = document.querySelector('.equationTable');
-  const equations = equationTable.querySelectorAll('.equation-row');
-  const variableCount = equations[0].querySelectorAll('.equation-variable');
-
-  let value;
-  let augmentedMatrix = newExecuteMatrix(equations.length, variableCount.length);
-
-  for (let e = 1; e <= equations.length; e++) {
-    console.log("equation-" + e);
-    let equation = equations[e - 1];
-    let variables = equations[e - 1].querySelectorAll('.equation-variable');
-    let operators = equations[e - 1].querySelectorAll('.equation-operator');
-    for (let v = 1; v <= variables.length; v++) {
-        console.log("variable-" + v);
-        let variable = variables[v - 1];
-        let value = Number(variable.children[0].value);
-        if (v != 1) {
-          let variableID = variable.id.split('-')[1];
-          let operatorIndex = variableID - 1;
-          let operatorsArray = Array.from(operators);
-          let operator = operatorsArray.find(element => element.id.toString().includes(operatorIndex));
-          if (operator.children[0].selectedOptions[0].innerText == "-") {
-            augmentedMatrix[e - 1][v - 1] = -value ? -value : -1;
-          }
-          else {
-            augmentedMatrix[e - 1][v - 1] = value ? value : 1;
-          }
-        }
-        else {
-          augmentedMatrix[e - 1][v - 1] = value ? value : 1;
-        }
-    }
-    let constant = equations[e - 1].querySelector('.equation-constant');
-    augmentedMatrix[e - 1].push(Number(constant.children[0].value));
-  }
-  return augmentedMatrix;
-}
-
-export function parseLinearEquationToDisplayString() {
-  const equationTable = document.querySelector('.equationTable');
-  const equations = equationTable.querySelectorAll('.equation-row');
-  const variableCount = equations[0].querySelectorAll('.equation-variable');
-
-  let displayString = "\\begin{array}{r}";
-
-  for (let e = 1; e <= equations.length; e++) {
-    console.log("equation-" + e);
-    let equation = equations[e - 1];
-    let variables = equations[e - 1].querySelectorAll('.equation-variable');
-    let operators = equations[e - 1].querySelectorAll('.equation-operator');
-    let char = equations[e - 1].querySelectorAll('.equation-char');
-    for (let v = 1; v <= variables.length; v++) {
-      console.log("variable-" + v);
-      console.log("char-" + v);
-      let value = Number(variables[v - 1].children[0].value)
-      displayString += ifDecimalC2Fraction(value ? value : 1);
-      displayString += char[v - 1].innerText;
-      if (v != variables.length) {
-        let operator = operators[v - 1].children[0].selectedOptions[0].innerText;
-        if (operator == "x" || operator == "÷") {
-          switch (operator) {
-            case 'x':
-              operator = '\\cdot';
-              break;
-            case '÷':
-              operator = '\\div';
-              break;
-          }
-        }
-        displayString += operator;
-      }
-    }
-    let constant = equations[e - 1].querySelector('.equation-constant').children[0].value;
-    displayString += " = " + ifDecimalC2Fraction(constant) + "\\\\";
-  }
-  displayString += "\\end{array}";
-  return displayString;
 }
 
 export function getDeterminant(matrix) {

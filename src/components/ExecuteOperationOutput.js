@@ -11,6 +11,7 @@ import ScalarDivision from './operations/execute/scalarDivision';
 import InvertMatrix from './operations/execute/invertMatrix';
 import TransposeMatrix from './operations/execute/transposeMatrix';
 import LinearEquations from './operations/execute/linearEquations';
+import SeriesOfFibonacci from './operations/execute/seriesOfFibonacci';
 import DisplayDefault from './operations/execute/default';
 
 const operations = {
@@ -23,6 +24,7 @@ const operations = {
   invertMatrix: InvertMatrix,
   transposeMatrix: TransposeMatrix,
   linearEquations: LinearEquations,
+  seriesOfFibonacci: SeriesOfFibonacci,
   default: DisplayDefault,
 }
 
@@ -37,7 +39,7 @@ export default class ExecuteOperationOutput extends Component {
     const { type, execute } = this.context;
     const classes = 'operationOutput-Container border border-secondary rounded p-1';
     var ChosenOperation;
-    if ( type == '' || type == 'default' || execute != 'true') {
+    if ( type == '' || type == 'default' || execute != true) {
       ChosenOperation = operations['default'];
     }
     else{

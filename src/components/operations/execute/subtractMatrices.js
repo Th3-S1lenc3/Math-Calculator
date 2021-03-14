@@ -38,7 +38,7 @@ export default class SubtractMatrices extends Component {
           resultantMatrix[j][k] -= matrix[j][k];
         }
       }
-      if (showSteps == 'true') {
+      if (showSteps) {
         if (i == 1) {
           outputTmp = (
             <p key={key + 1}>$$Subtract\ the\ elements\ in\ the\ matching\ positions\ on\ the\ {ordinal_suffix_of(1)}\ and\ {ordinal_suffix_of(2)}\ matrix: $$</p>

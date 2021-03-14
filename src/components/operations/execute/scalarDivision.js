@@ -27,7 +27,7 @@ export default class ScalarDivision extends Component {
 
     scalar = 1 / scalar;
 
-    if (showSteps == 'true') {
+    if (showSteps) {
       outputTmp = (
         <p key={key + 1}>$$Convert\ to\ multiplication:$$</p>
       )
@@ -51,7 +51,7 @@ export default class ScalarDivision extends Component {
       }
     }
 
-    if (showSteps == 'true') {
+    if (showSteps) {
       outputTmp = (
         <p key={key + 3}>$$Multiply\ each\ element\ of\ the\ matrix\ by\ the\ scalar: $$</p>
       )

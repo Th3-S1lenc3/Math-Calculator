@@ -29,7 +29,7 @@ export default class ScalarMultiplication extends Component {
       }
     }
 
-    if (showSteps == 'true') {
+    if (showSteps) {
       outputTmp = (
         <p key={key + 1}>$$Multiply\ each\ element\ of\ the\ matrix\ by\ the\ scalar: $$</p>
       )

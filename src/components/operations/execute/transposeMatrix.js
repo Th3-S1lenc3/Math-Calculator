@@ -22,7 +22,7 @@ export default class TransposeMatrix extends Component {
     let output = [];
     let outputTmp;
 
-    if (showSteps == 'true') {
+    if (showSteps) {
       outputTmp = (
         <p key={key +1}>\(Transpose\ Matrix:\)</p>
       )
@@ -41,7 +41,7 @@ export default class TransposeMatrix extends Component {
       for (let c = 0; c < columns; c++) {
         let key = r + '_' + c;
         transposedMatrix[c][r] = matrix[r][c];
-        if (showSteps == 'true') {
+        if (showSteps) {
           outputTmp = (
             <p key={key + 1}>$$
               A_{`{` + (r + 1) + (c + 1) + `}`} \to A^{`{T}`}_{`{` + (c + 1) + (r + 1) + `}`}

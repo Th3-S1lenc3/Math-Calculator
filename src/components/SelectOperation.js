@@ -47,7 +47,7 @@ export default class SelectOperation extends Component {
           }} className="custom-select custom-select-sm">
             <option defaultValue hidden>Select an operation</option>
             <option value="linearEquations">Solve Systems of Linear Equations</option>
-            <option disabled value="seriesOfFibbonaci">Calculate series of digit in Fibbonaci Sequence</option>
+            <option value="seriesOfFibonacci">Calculate series of digit in Fibonacci Sequence</option>
             <option disabled value="diceProbability">Dice Probability</option>
             <option disabled value="sortSequence">Sort Sequence of Numbers</option>
           </select>
@@ -56,11 +56,3 @@ export default class SelectOperation extends Component {
     }
   }
 }
-<select>
-  <optgroup label="Level One"></optgroup>
-  <option style="padding-left:15px"> A.1 </option>
-  <optgroup label="Level Two" style="padding-left:15px"></optgroup>
-  <option style="padding-left:30px"> A.B.1 </option>
-  <option style="padding-left:15px"> A.2 </option>
-  <option> A </option>
-</select>

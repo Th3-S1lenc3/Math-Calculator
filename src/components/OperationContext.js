@@ -5,9 +5,8 @@ export const OperationContext = React.createContext();
 export default class OperationContextProvider extends React.Component {
   state = {
     type: 'default',
-    execute: 'false',
-    showSteps: 'false',
-    matrices: {},
+    execute: false,
+    showSteps: false,
     showMatrixOperations: false,
   };
 
@@ -16,7 +15,7 @@ export default class OperationContextProvider extends React.Component {
 
     if ( name == 'type' ) {
       this.setState(() => ({
-        execute: 'false'
+        execute: false
       }));
     }
 
@@ -24,8 +23,8 @@ export default class OperationContextProvider extends React.Component {
       [name]: value
     }));
 
-    console.log(this.state);
-    console.log(target);
+    setTimeout(() => {console.log(this.state)}, 1);
+    setTimeout(() => {MathJax.typeset()}, 1);
   }
 
   render() {
