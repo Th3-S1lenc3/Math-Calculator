@@ -1,0 +1,36 @@
+.dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdown-btn-active {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdown-btn-active .caret {
+  transform: rotateX(90);
+}
+
+.dropdown-container {
+  display: none;
+  padding-left: 8px;
+}

@@ -44,7 +44,7 @@ export default class TransposeMatrix extends Component {
         if (showSteps) {
           outputTmp = (
             <p key={key + 1}>$$
-              A_{`{` + (r + 1) + (c + 1) + `}`} \to A^{`{T}`}_{`{` + (c + 1) + (r + 1) + `}`}
+              A_{`{${(r + 1) + (c + 1)}}`} \to A^{`{T}`}_{`{${(c + 1) + (r + 1)}}`}
             $$</p>
           )
           output.push(outputTmp);

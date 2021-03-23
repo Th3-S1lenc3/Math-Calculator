@@ -2,18 +2,18 @@ const Fraction = require('fraction.js');
 
 export function getMatrices() {
   const matrices = document.querySelectorAll('.matrix');
-  const rows = document.querySelector('.matrix').querySelectorAll('.matrix-row');
-  const cols = document.querySelector('.matrix-row').querySelectorAll('.matrix-column');
   let dictMatrices = [];
 
   for (let m = 1; m <= matrices.length; m++) {
     const matrix = document.querySelector('#matrix-' + m);
+    let rows = matrix.querySelectorAll('.matrix-row');
+    let cols = matrix.querySelector('.matrix-row').querySelectorAll('.matrix-column');
     let newMatrix = newExecuteMatrix(rows.length, cols.length);
     for (let r = 1; r <= rows.length; r++) {
       let row = matrix.querySelector('#row-' + r);
       for (let c = 1; c <= cols.length; c++) {
         let column = row.querySelector('#column-' + c);
-        newMatrix[r - 1][c - 1] = Number(column.children[0].value);
+        newMatrix[r - 1][c - 1] = Number(column.children[0].innerText);
       }
     }
     dictMatrices[m-1] = newMatrix;
@@ -23,7 +23,7 @@ export function getMatrices() {
 }
 
 export function getScalar() {
-  return Number(document.querySelector('.scalarInput').value);
+  return Number(document.querySelector('.scalarInput').innerText);
 }
 
 export function getLinearEquationsAsAugmentedMatrix() {
@@ -42,7 +42,7 @@ export function getLinearEquationsAsAugmentedMatrix() {
     for (let v = 1; v <= variables.length; v++) {
         console.log("variable-" + v);
         let variable = variables[v - 1];
-        let value = Number(variable.children[0].value);
+        let value = Number(variable.children[0].innerText);
         if (v != 1) {
           let variableID = variable.id.split('-')[1];
           let operatorIndex = variableID - 1;
@@ -60,7 +60,7 @@ export function getLinearEquationsAsAugmentedMatrix() {
         }
     }
     let constant = equations[e - 1].querySelector('.equation-constant');
-    augmentedMatrix[e - 1].push(Number(constant.children[0].value));
+    augmentedMatrix[e - 1].push(Number(constant.children[0].innerText));
   }
   return augmentedMatrix;
 }
@@ -81,7 +81,7 @@ export function parseLinearEquationToDisplayString() {
     for (let v = 1; v <= variables.length; v++) {
       console.log("variable-" + v);
       console.log("char-" + v);
-      let value = Number(variables[v - 1].children[0].value)
+      let value = Number(variables[v - 1].children[0].innerText)
       displayString += ifDecimalC2Fraction(value ? value : 1);
       displayString += char[v - 1].innerText;
       if (v != variables.length) {
@@ -99,8 +99,8 @@ export function parseLinearEquationToDisplayString() {
         displayString += operator;
       }
     }
-    let constant = equations[e - 1].querySelector('.equation-constant').children[0].value;
-    displayString += " = " + ifDecimalC2Fraction(constant) + "\\\\";
+    let constant = equations[e - 1].querySelector('.equation-constant').children[0].innerText;
+    displayString += `= ${ifDecimalC2Fraction(constant)} \\\\`;
   }
   displayString += "\\end{array}";
   return displayString;
@@ -108,14 +108,52 @@ export function parseLinearEquationToDisplayString() {
 
 export function getFibonacciBounds() {
   let output = [];
-  let bounds = document.querySelectorAll('.scalarInput');
+  let bounds = document.querySelectorAll('.fibonacciInput');
 
   for (let i = 0; i < bounds.length; i++) {
-    output.push(Number(bounds[i].value))
+    output.push(Number(bounds[i].innerText))
   }
 
-  console.log(output);
+  let sort = (array, arrayLength) => {
+    if (arrayLength <= 1) {
+      return;
+    }
+
+    sort(array, arrayLength - 1);
+
+    let prevArray = copy(array);
+
+    let last = array[arrayLength-1];
+    let j = arrayLength - 2;
+
+    while (j >= 0 && array[j] > last) {
+      array[j+1] = array[j];
+      j = j-1;
+    }
+
+    array[j+1] = last;
+
+    return array;
+  }
+
+  sort(output, output.length)
+
   return output;
+}
+
+export function getDiceInputs() {
+  let output = [];
+  let bounds = document.querySelectorAll('.diceInput');
+
+  for (let i = 0; i < bounds.length; i++) {
+    output.push(Number(bounds[i].innerText))
+  }
+
+  return output;
+}
+
+export function getSequence() {
+  return document.querySelector('.sequenceInput').innerText;
 }
 
 export function fibonacci(n) {
@@ -144,10 +182,10 @@ export function ifDecimalC2Fraction(x) {
       }
       else {
         if (newX.s == -1) {
-          x = "-\\frac{" + newX.n + "}{" + newX.d + "}";
+          x = `-\\frac{${newX.n}}{${newX.d}}`;
         }
         else {
-          x = "\\frac{" + newX.n + "}{" + newX.d + "}";
+          x = `\\frac{${newX.n}}{${newX.d}}`;
         }
       }
   }
@@ -196,18 +234,18 @@ export function ordinal_suffix_of(i) {
   let k = i % 100;
 
   if (j == 1 && k != 11) {
-      return i + "^{st}";
+      return `${i}^{st}`;
   }
 
   if (j == 2 && k != 12) {
-      return i + "^{nd}";
+      return `${i}^{nd}`;
   }
 
   if (j == 3 && k != 13) {
-      return i + "^{rd}";
+      return `${i}^{rd}`;
   }
 
-  return i + "^{th}";
+  return `${i}^{th}`;
 }
 
 export function copy(x) {
@@ -262,4 +300,16 @@ export function getDeterminant(matrix) {
     }
   }
   return determinant;
+}
+
+export function factorial(n) {
+  if (n < 0) {
+    return -1;
+  }
+  else if (n == 0) {
+    return 1;
+  }
+  else {
+    return (n * factorial(n - 1))
+  }
 }

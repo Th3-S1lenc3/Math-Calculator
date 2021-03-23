@@ -10,7 +10,7 @@ export default class SeriesOfFibonacci extends Component {
   seriesOfFibonacci() {
     console.log('Calculating Fibonacci Numbers');
     const { showSteps } = this.context;
-    let bounds = copy(getFibonacciBounds());
+    let bounds = getFibonacciBounds();
     let x = bounds[0];
     let y = bounds[1];
     let fibonacciNumbers = [];
@@ -77,7 +77,7 @@ export default class SeriesOfFibonacci extends Component {
     if ((y - x) > 1 && showSteps) {
       outputTmp = (
         <p key={key+7}>$$
-          \sum_{`{n=x}`}^{`{y}`} F_{`{n}`} = F_{`{x}`} + F_{`{x+1}`} + \cdots + F_{`{x=y}`}
+          \sum_{`{n=x}`}^{`{y}`} F_{`{n}`} = F_{`{n}`} + F_{`{n+1}`} + \cdots + F_{`{n+y}`}
         $$</p>
       )
       output.push(outputTmp);
@@ -85,7 +85,7 @@ export default class SeriesOfFibonacci extends Component {
     else if (showSteps) {
       outputTmp = (
         <p key={key+8}>$$
-          \sum_{`{n=x}`}^{`{y}`} F_{`{n}`} = F_{`{x}`} + F_{`{y}`}
+          \sum_{`{n=x}`}^{`{y}`} F_{`{n}`} = F_{`{n}`} + F_{`{n+1}`}
         $$</p>
       )
       output.push(outputTmp);

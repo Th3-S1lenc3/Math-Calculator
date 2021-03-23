@@ -2,6 +2,9 @@
   "name": "math-calculator",
   "version": "2.0.0-alpha",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "better-react-mathjax": "^0.0.15-beta",
     "bootstrap": "^4.6.0",
     "concurrently": "^6.0.0",

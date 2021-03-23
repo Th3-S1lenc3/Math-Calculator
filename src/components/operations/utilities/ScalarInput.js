@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
+import Span from './Span';
+
 export default class ScalarInput extends Component {
   render() {
-    const classes = 'scalarInput ml-1';
+    const classes = 'scalarInput p-1';
 
+    let placeholder = this.props.placeholder || '0';
     return (
-      <input type='number' className={classes} />
+      <Span type='number' className={classes} placeholder={placeholder}/>
     )
   }
 }

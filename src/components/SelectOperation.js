@@ -48,8 +48,8 @@ export default class SelectOperation extends Component {
             <option defaultValue hidden>Select an operation</option>
             <option value="linearEquations">Solve Systems of Linear Equations</option>
             <option value="seriesOfFibonacci">Calculate series of digit in Fibonacci Sequence</option>
-            <option disabled value="diceProbability">Dice Probability</option>
-            <option disabled value="sortSequence">Sort Sequence of Numbers</option>
+            <option value="diceProbability">Dice Probability</option>
+            <option value="sortSequence">Sort Sequence of Numbers</option>
           </select>
         </div>
       )

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Span from './Span';
+
 export default class SystemOfLinearEquations extends Component {
 
   createEquationTable() {
@@ -23,7 +25,7 @@ export default class SystemOfLinearEquations extends Component {
 
       variable = (
         <td key={key + 1} id={variable_id} className="equation-variable">
-          <input type="number" className="equation-input" />
+          <Span type="number" className="equation-input" placeholder="0" />
         </td>
       )
       variablesArr.push(variable)
@@ -55,7 +57,7 @@ export default class SystemOfLinearEquations extends Component {
         variablesArr.push(variable);
         variable = (
           <td key={key + 5} id={constant_id} className="equation-constant">
-            <input type='number' className="equation-input" />
+            <Span type='number' className="equation-input" placeholder="0"/>
           </td>
         )
         variablesArr.push(variable);

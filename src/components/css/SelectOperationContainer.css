@@ -2,10 +2,19 @@
   transform: translateY(10%);
 }
 
+.configure-operation {
+  height: 200px;
+}
+
 .toggleMatrixOperations {
 
 }
 
 .toggleMatrixOperations-label {
   font-size: 13px;
+}
+
+.list-inner {
+  height: calc(100vh - 285px);
+  overflow-y: auto;
 }

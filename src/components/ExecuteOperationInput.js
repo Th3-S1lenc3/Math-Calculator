@@ -12,6 +12,8 @@ import InvertMatrix from './operations/display/invertMatrix';
 import TransposeMatrix from './operations/display/transposeMatrix';
 import LinearEquations from './operations/display/linearEquations';
 import SeriesOfFibonacci from './operations/display/seriesOfFibonacci';
+import DiceProbability from './operations/display/diceProbability';
+import SortSequence from './operations/display/sortSequence';
 import DisplayDefault from './operations/display/default';
 
 const operations = {
@@ -25,6 +27,8 @@ const operations = {
   transposeMatrix: TransposeMatrix,
   linearEquations: LinearEquations,
   seriesOfFibonacci: SeriesOfFibonacci,
+  diceProbability: DiceProbability,
+  sortSequence: SortSequence,
   default: DisplayDefault,
 }
 

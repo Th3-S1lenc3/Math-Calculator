@@ -1,6 +1,7 @@
 .operationInput-Container {
   grid-column: 1;
   grid-row: 1;
+  overflow-x: auto;
 }
 
 .operationInput {
@@ -21,20 +22,29 @@
 }
 
 .matrix {
-  width: 153px !important;
+  --border-color: #000000;
+  background-image: linear-gradient(var(--border-color), var(--border-color)),
+                    linear-gradient(var(--border-color), var(--border-color)),
+                    linear-gradient(var(--border-color), var(--border-color)),
+                    linear-gradient(var(--border-color), var(--border-color));
+  background-repeat: no-repeat;
+  background-size: 8px 2px;
+  background-position: top left, top right, bottom left, bottom right;
+  border: solid var(--border-color);
+  border-width: 0 2px;
+
+  min-width: 60px;
 }
 
-.matrixInput {
-  width: 67px !important;
+.sequenceInput {
+  min-width: 153px;
 }
 
-.scalarInput {
-  width: 153px !important;
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  color:gray;
 }
 
-.equation-input{
-  width: 90px;
-  min-width: 90px;
-  max-width: 300px;
-  transition: width 0.25s;
+[contenteditable=true] br{
+  display:none;
 }

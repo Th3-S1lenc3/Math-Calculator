@@ -7,14 +7,14 @@ import { OperationContext } from './OperationContext';
 import SelectOperation from './SelectOperation';
 import SelectOperationDetail from './SelectOperationDetail';
 import BtnCalculate from './BtnCalculate';
-import ListMatrices from './ListMatrices';
+import ListMatrices from './lists/ListMatrices';
+import ListEquations from './lists/ListEquations';
+import ListDefault from './lists/default';
 
 const lists = {
   listMatrices: ListMatrices,
   listEquations: ListEquations,
-  listDice: ListDice,
-  listNumbers: ListNumbers,
-  default: null,
+  default: ListDefault,
 }
 
 export default class SelectOperationContainer extends Component {
@@ -24,12 +24,12 @@ export default class SelectOperationContainer extends Component {
     const classes = 'select-operation-container navbar navbar-expand-md navbar-dark bg-dark fixed-left';
     const { setContext, showMatrixOperations, type } = this.context;
 
-    let List;
+    let List = lists['default'];
 
     if (showMatrixOperations) {
       List = lists['listMatrices'];
     }
-    else if (type.includes('Equations')) {
+    else if (type == 'linearEquations') {
       List = lists['listEquations'];
     }
 
@@ -52,8 +52,7 @@ export default class SelectOperationContainer extends Component {
               <li className="nav-item"><SelectOperationDetail /></li>
               <li className="nav-item"><BtnCalculate /></li>
             </div>
-            <div className="matrices">
-              <a className="navbar-brand">Matrices</a>
+            <div className="list">
               <List />
             </div>
           </ul>

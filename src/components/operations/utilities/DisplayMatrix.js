@@ -151,7 +151,7 @@ export default class DisplayMatrix extends Component {
 
     if (typeof this.props.type !== 'undefined' && !specialTypes.includes(this.props.type)) {
       let { type } = this.props;
-      matrixType = '{' + type + '}';
+      matrixType = `{${type}}`;
     }
     else {
       matrixType = '{bmatrix}';
