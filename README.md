@@ -16,8 +16,8 @@ This project is a calculator for math operations including:
  - Matrix operations
  - Solving systems of linear equations
  - Fibonacci Sequence
- - Probability of throwing n on n 6 sided dice
- - Recursive sorting of given digits
+ - Probability of rolling r on n, s-sided die
+ - Recursive sorting of digits
 
 # Technologies
 [Back to top](#table-of-contents)
@@ -30,6 +30,9 @@ Project is created with:
 - Better-react-mathjax: 0.0.15-beta
 - Electron: 12.0.1
 - React: 17.0.1
+- react-fontawesome: 0.1.14
+- fontawesome-svg-core: 1.2.35
+- free-solid-svg-icons : 5.15.3
 
 # Installation & Usage
 [Back to top](#table-of-contents)

@@ -23,20 +23,11 @@ export default class Matrix extends Component {
       let row_id = 'row-' + j;
       let row;
 
-      if (j == 1) {
-        row = (
-          <tr key={j} id={row_id} className="matrix-row">
-            {colsArr}
-          </tr>
-        );
-      }
-      else {
-        row = (
-          <tr key={j} id={row_id} className="matrix-row">
-            {colsArr}
-          </tr>
-        );
-      }
+      row = (
+        <tr key={j} id={row_id} className="matrix-row">
+          {colsArr}
+        </tr>
+      );
 
       rowsArr.push(row)
     }

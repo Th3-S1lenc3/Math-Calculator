@@ -25,7 +25,7 @@ export default class SystemOfLinearEquations extends Component {
 
       variable = (
         <td key={key + 1} id={variable_id} className="equation-variable">
-          <Span type="number" className="equation-input" placeholder="0" />
+          <Span type="number" className="equation-input" placeholder="1" />
         </td>
       )
       variablesArr.push(variable)
