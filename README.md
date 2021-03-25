@@ -24,7 +24,7 @@ Project is created with:
 - bootstrap: 4.6.0
 - fraction.js: 4.0.13
 - jquery: 3.5.1
-- better-react-mathjax: 0.0.15-beta
+- better-react-mathjax: 0.0.20-beta
 - electron: 12.0.1
 - react: 17.0.1
 - react-fontawesome: 0.1.14
@@ -84,9 +84,9 @@ Download from tag:
 $ git clone --depth 1 --branch <tag_name> https://github.com/Th3-S1lenc3/Math-Calculator.git
 $ cd Math-Calculator
 $ npm install
-$ For <tag_name> >= v2.0.0
+For <tag_name> >= v2.0.0
 $ npm run electron-dev
-$ For <tag_name> < v2.0.0
+For <tag_name> < v2.0.0
 $ npm start
 ```
 
