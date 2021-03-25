@@ -34,13 +34,13 @@ Project is created with:
 # Installation & Usage
 [Back to top](#math-calculator)
 
-## Option 1: Download a prebuilt binary
+### Option 1: Download a prebuilt binary
 
 Go to the [Releases](https://github.com/Th3-S1lenc3/Math-Calculator/releases) tab and download the release for your operating system.
 
 On Linux, you will need to `chmod +x` the AppImage file in order to run it.
 
-### Optional:
+##### Optional:
 Verify your download by generating a SHA256 sum of the downloaded file and then check that matches the sum for your file on the releases page.
 
 On *nix systems:
@@ -69,7 +69,7 @@ Command Prompt
 $ certutil -hashfile math-calculator_2.0.0_amd64_windows_portable.exe sha256
 ```
 
-## Option 2 : Clone from repository
+### Option 2 : Clone from repository
 **IMPORTANT NOTE:** downloading the latest release will download the latest unreleased, development version and may not be stable.
 
 Download Latest:
