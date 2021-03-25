@@ -40,7 +40,7 @@ Go to the [Releases](https://github.com/Th3-S1lenc3/Math-Calculator/releases) ta
 
 On Linux, you will need to `chmod +x` the AppImage file in order to run it.
 
-##### Optional:
+#### Optional:
 Verify your download by generating a SHA256 sum of the downloaded file and then check that matches the sum for your file on the releases page.
 
 On *nix systems:
