@@ -4,9 +4,13 @@ const url = require('url');
 const isDev = require('electron-is-dev');
 
 function createWindow() {
+  let width = 900;
+  let height = 680;
   mainWindow = new BrowserWindow({
-    width: 900,
-    height: 680,
+    width: width,
+    height: height,
+    minWidth: width,
+    minHeight: height,
     webPreferences: {
       nodeIntegration: true,
     }

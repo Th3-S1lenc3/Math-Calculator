@@ -12,12 +12,12 @@ export default class InvertMatrix extends Component {
   invertMatrix() {
     console.log('Inverting Matrices');
     const { showSteps } = this.context;
-    let matrices = copy(getMatrices());
-    let matricesOrignal = copy(getMatrices());
+    let matrices = getMatrices();
+    let matricesOrignal = copy(matrices);
     let matrix = copy(matrices[0]);;
     let matrixOriginal = copy(matrix);
-    let rows = matrix.length;
-    let columns = matrix[0].length;
+    const rows = matrix.length;
+    const columns = matrix[0].length;
     let newMatrix = newExecuteMatrix(rows, columns);
     let key = 0 + '-'
 
@@ -42,6 +42,8 @@ export default class InvertMatrix extends Component {
     let determinant = getDeterminant(matrix);
 
     if (showSteps) {
+      let matrix = copy(matricesOrignal[0])
+
       outputTmp = (
         <p key={key + 0}>$$
           A = <DisplayMatrix rows={rows} columns={columns} matrix={matrix}/>
@@ -117,7 +119,7 @@ export default class InvertMatrix extends Component {
 
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < columns; c++) {
-        matrix[r][c] = augmentedMatrix[r][c+2];
+        matrix[r][c] = augmentedMatrix[r][c+columns];
       }
     }
 

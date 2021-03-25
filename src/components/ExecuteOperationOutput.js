@@ -14,7 +14,7 @@ import LinearEquations from './operations/execute/linearEquations';
 import SeriesOfFibonacci from './operations/execute/seriesOfFibonacci';
 import DiceProbability from './operations/execute/diceProbability';
 import SortSequence from './operations/execute/sortSequence';
-import DisplayDefault from './operations/execute/default';
+import ExecuteDefault from './operations/execute/default';
 
 const operations = {
   addMatrices: AddMatrices,
@@ -29,7 +29,7 @@ const operations = {
   seriesOfFibonacci: SeriesOfFibonacci,
   diceProbability: DiceProbability,
   sortSequence: SortSequence,
-  default: DisplayDefault,
+  default: ExecuteDefault,
 }
 
 export default class ExecuteOperationOutput extends Component {

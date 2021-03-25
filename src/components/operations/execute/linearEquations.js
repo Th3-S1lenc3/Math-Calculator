@@ -12,10 +12,10 @@ export default class LinearEquations extends Component {
   linearEquations() {
     console.log('Solving Linear Equations');
     const { showSteps } = this.context;
-    let augmentedMatrix = copy(getLinearEquationsAsAugmentedMatrix());
-    let rows = augmentedMatrix.length
-    let actualColumns = augmentedMatrix[0].length;
-    let columns = actualColumns - 1;
+    let augmentedMatrix = getLinearEquationsAsAugmentedMatrix();
+    const rows = augmentedMatrix.length
+    const actualColumns = augmentedMatrix[0].length;
+    const columns = actualColumns - 1;
     let equationRow = document.querySelector('.equation-row');
     let charCount = equationRow.querySelectorAll('.equation-char');
     let operatorCount = equationRow.querySelectorAll('.equation-operator');
@@ -26,7 +26,6 @@ export default class LinearEquations extends Component {
     let outputTmp;
 
     if (rows != columns) {
-      console.log(augmentedMatrix);
       outputTmp = (
         <p key={key + 1}>$$Invalid\ Operation.\ The\ number\ of\ equations\ must\ be\ equal\ to\ the\ number\ of\ unknowns.$$</p>
       );
@@ -34,7 +33,7 @@ export default class LinearEquations extends Component {
       return output;
     }
 
-    let augmentedMatrixOriginal = copy(augmentedMatrix)
+    let augmentedMatrixOriginal = copy(augmentedMatrix);
 
     for (let column = 0; column < columns; column++){
       let entry = 1 / augmentedMatrix[column][column];
@@ -176,11 +175,22 @@ export default class LinearEquations extends Component {
     );
     output.push(outputTmp);
 
+    let resultArray = [];
+    let resultTmp;
+
+    for (let i = 0; i < charCount.length; i++) {
+      resultTmp = (
+        <>
+        {charCount[i].innerText} & = & {ifDecimalC2Fraction(matrix[i][0])} \\
+        </>
+      )
+      resultArray.push(resultTmp);
+    }
+
     outputTmp = (
       <p key={key + 10}>$$
         \begin{`{array}{rrr}`}
-        {charCount[0].innerText} & = & {ifDecimalC2Fraction(matrix[0][0])} \\
-        {charCount[1].innerText} & = & {ifDecimalC2Fraction(matrix[1][0])} \\
+        {resultArray}
         \end{`{array}`}
       $$</p>
     );

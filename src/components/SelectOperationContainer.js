@@ -33,6 +33,8 @@ export default class SelectOperationContainer extends Component {
       List = lists['listEquations'];
     }
 
+    let state = showMatrixOperations ? 'Hide' : 'Show';
+
     return (
       <nav className={classes}>
         <div className="collapse navbar-collapse">
@@ -45,11 +47,11 @@ export default class SelectOperationContainer extends Component {
                     const target = { name: 'showMatrixOperations', value: !showMatrixOperations };
                     {setContext(target)}
                   }}/>
-                  <label className="toggleMatrixOperations-label custom-control-label" htmlFor="toggleMatrixOperations">Toggle Matrix Operations</label>
+                  <label className="toggleMatrixOperations-label custom-control-label" htmlFor="toggleMatrixOperations">{state} Matrix Operations</label>
                 </div>
               </li>
               <li className="nav-item"><SelectOperation /></li>
-              <li className="nav-item"><SelectOperationDetail /></li>
+              <li className="nav-link"><SelectOperationDetail /></li>
               <li className="nav-item"><BtnCalculate /></li>
             </div>
             <div className="list">

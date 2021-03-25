@@ -11,12 +11,12 @@ export default class ScalarDivision extends Component {
   scalarDivision() {
     console.log('Dividing Matrix by scalar');
     const { showSteps } = this.context;
-    let matrices = copy(getMatrices());
-    let matricesOrignal = copy(getMatrices());
-    let scalar = copy(getScalar());
+    let matrices = getMatrices();
+    let matricesOrignal = copy(matrices);
+    let scalar = getScalar();
     let matrix = copy(matrices[0]);;
-    let rows = matrix.length;
-    let columns = matrix[0].length;
+    const rows = matrix.length;
+    const columns = matrix[0].length;
     let newMatrix = newExecuteMatrix(rows, columns);
     let key = 0 + '-';
 

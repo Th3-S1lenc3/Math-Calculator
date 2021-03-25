@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { OperationContext } from '../../OperationContext';
+import Span from '../utilities/Span';
 
 export default class SortSequence extends Component {
   render() {
@@ -8,7 +9,8 @@ export default class SortSequence extends Component {
 
     return (
       <div className={classes}>
-        <span className='sequenceInput ml-1 border border-secondary rounded' contentEditable='true' placeholder='Enter Sequence' />
+        Please enter a comma separated list of digits:
+        <p className='sequenceInput-container ml-1'>{`{`}<Span className='sequenceInput' type='sequence' placeholder='Enter Sequence' />{`}`}</p>
       </div>
     )
   }

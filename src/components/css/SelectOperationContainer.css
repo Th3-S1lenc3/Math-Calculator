@@ -6,11 +6,7 @@
   height: 200px;
 }
 
-.toggleMatrixOperations {
-
-}
-
-.toggleMatrixOperations-label {
+.toggleMatrixOperations-label, .toggleSteps-label{
   font-size: 13px;
 }
 

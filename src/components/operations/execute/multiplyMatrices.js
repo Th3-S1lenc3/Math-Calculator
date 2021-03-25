@@ -11,8 +11,8 @@ export default class MultiplyMatrices extends Component {
   multiplyMatrices() {
     console.log('Multiplying Matrices');
     const { showSteps } = this.context;
-    let matrices = copy(getMatrices());
-    let matricesOrignal = copy(getMatrices());
+    let matrices = getMatrices();
+    let matricesOrignal = copy(matrices);
     const allEqual = arr => arr.every((value, i) => (value.length === arr[i].length));
     let m1 = copy(matrices[0]);;
     let m2 = copy(matrices[1]);;
@@ -23,22 +23,20 @@ export default class MultiplyMatrices extends Component {
     let output = [];
     let outputTmp;
 
-    if (matrices.length > 2) {
-      if (!allEqual(matrices)) {
-        return (
-          <p key={0}>Invalid Operation. To multiply more than 2 matrices they must be the same dimension.</p>
-        );
-      }
+    if (matrices.length > 2 && !allEqual(matrices)) {
+      return (
+        <p key={0}>$$
+          Invalid Operation. To multiply more than 2 matrices they must be the same dimension.
+        $$</p>
+      );
     }
-    else {
-      let m1 = matrices[0];
-      let m2 = matrices[1];
-
-      if (m1[0].length != m2.length) {
-        return (
-          <p key={0}>Invalid Operation. To multiply 2 matrices there must be the same numbers rows in the {ordinal_suffix_of(1)} matrix as columns in the {ordinal_suffix_of(2)} matrix.</p>
-        );
-      }
+    else if (m1[0].length != m2.length) {
+      return (
+        <p key={0}>$$
+          Invalid\ Operation.\ To\ multiply\ 2\ matrices\ there\ must\ be\ the\ same\ numbers\ columns\ in\ the\ {ordinal_suffix_of(1)}\ matrix
+          \ as\ rows\ in\ the\ {ordinal_suffix_of(2)}\ matrix.
+        $$</p>
+      );
     }
 
     newMatrix = matrices.reduce((resultantMatrix, matrix, i) => {
@@ -58,6 +56,7 @@ export default class MultiplyMatrices extends Component {
         for (let col = 0; col < columns; col++) {
           tmpValue = 0;
           for (let c = 0; c < columns; c++) {
+            console.log(matrix1, matrix);
             tmpValue += matrix1[r][c] * matrix[c][col];
           }
           resultantMatrix[r].push(tmpValue);

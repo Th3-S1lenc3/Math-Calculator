@@ -11,12 +11,12 @@ export default class AddMatrices extends Component {
   addMatrices() {
     console.log('Adding Matrices');
     const { showSteps } = this.context;
-    let matrices = copy(getMatrices());
-    let matricesOrignal = copy(getMatrices());
+    let matrices = getMatrices();
+    let matricesOrignal = copy(matrices);
     const allEqual = arr => arr.every(v => v.length === arr[0].length);
-    let matrix = matrices[0];
-    let rows = matrix.length;
-    let columns = matrix[0].length;
+    let matrix = copy(matrices[0]);
+    const rows = matrix.length;
+    const columns = matrix[0].length;
     let newMatrix = newExecuteMatrix(rows, columns);
 
     let output = [];
@@ -58,7 +58,7 @@ export default class AddMatrices extends Component {
             <DisplayMatrix rows={rows} columns={columns} matrix={matrix1} /> +
             <DisplayMatrix rows={rows} columns={columns} matrix={matrix} /> =
             <DisplayMatrix rows={rows} columns={columns} matrix={matrix1} separator={'+'} matrix2={matrix} /> =
-            <DisplayMatrix rows={rows} columns={columns} matrix={resultantMatrix} />
+            <DisplayMatrix rows={rows} columns={columns} matrix={copy(resultantMatrix)} />
           $$</p>
         );
         output.push(outputTmp);

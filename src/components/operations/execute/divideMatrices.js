@@ -12,17 +12,17 @@ export default class DivideMatrices extends Component {
   divideMatrices() {
     console.log('Divide Matrices');
     const { showSteps } = this.context;
-    let matrices = copy(getMatrices());
-    let matricesOrignal = copy(getMatrices());
+    let matrices = getMatrices();
+    let matricesOrignal = copy(matrices);
     const allEqual = arr => arr.every((value, i) => (value.length === arr[i].length));
     let m1 = copy(matrices[0]);
     let m2 = copy(matrices[1]);
-    let rows = m1.length;
-    let columns = m2[0].length;
+    const rows = m1.length;
+    const columns = m2[0].length;
     let newMatrix = newExecuteMatrix(rows, columns);
-    let outputHold = [];
 
     let output = [];
+    let outputHold = [];
     let outputTmp;
 
     if (!allEqual(matrices)) {
@@ -32,8 +32,6 @@ export default class DivideMatrices extends Component {
     }
 
     if (showSteps) {
-      outputHold = [];
-
       outputTmp = (
         <p key={1}>$$Convert\ to\ multiplication: $$</p>
       )
@@ -103,14 +101,16 @@ export default class DivideMatrices extends Component {
         <p key={3}>$$Check\ every\ matrix\ after\ the\ {ordinal_suffix_of(1)}\ can\ be\ inverted:$$</p>
       );
       output.push(outputTmp);
+    }
 
-      let detCheck = matricesOrignal.every((matrix, i) => {
-        let determinant = 1;
-        if (i != 0) {
-          let key = i + '~'
+    let detCheck = matricesOrignal.every((matrix, i) => {
+      let determinant = 1;
+      if (i != 0) {
+        let key = i + '~'
 
-          determinant = getDeterminant(matrix);
+        determinant = getDeterminant(matrix);
 
+        if (showSteps) {
           outputTmp = (
             <p key={key + 0}>$$
               A = <DisplayMatrix rows={rows} columns={columns} matrix={matrix}/>
@@ -125,29 +125,28 @@ export default class DivideMatrices extends Component {
               {ifDecimalC2Fraction(determinant)}
             $$</p>
           )
-
           output.push(outputTmp);
         }
-
-        if (determinant == 0) {
-          outputTmp = (
-            <p key={key + 2}>$$The\ determinant\ of\ matrix\ {i + 1}\ is\ 0\ therefore\ the\ inverse\ cannot\ be\ determined.$$</p>
-          )
-          output.push(outputTmp);
-        }
-
-        return determinant != 0;
-      });
-
-      if (!detCheck) {
-        return output;
       }
-      else {
+
+      if (determinant == 0) {
         outputTmp = (
-          <p key={4}>$$Determinants\ exist\ for\ all\ matrices.$$</p>
+          <p key={key + 2}>$$The\ determinant\ of\ matrix\ {i + 1}\ is\ 0\ therefore\ the\ inverse\ cannot\ be\ determined.$$</p>
         )
         output.push(outputTmp);
       }
+
+      return determinant != 0;
+    });
+
+    if (!detCheck) {
+      return output;
+    }
+    else if (showSteps){
+      outputTmp = (
+        <p key={4}>$$Determinants\ exist\ for\ all\ matrices.$$</p>
+      )
+      output.push(outputTmp);
     }
 
     newMatrix = matrices.reduce((resultantMatrix, matrix, i) => {
@@ -223,7 +222,7 @@ export default class DivideMatrices extends Component {
             <DisplayArray rows={rows} columns={newColumns} matrix={augmentedMatrixOriginal} splitPoint={columns} separator={'|'} />
             \xrightarrow{`{\\text{Gaussian Elimination}}`}
             <DisplayArray rows={rows} columns={newColumns} matrix={augmentedMatrix} splitPoint={columns} separator={'|'} />
-            \to
+            \xrightarrow{`{\\text{Extract Inverted Matrix}}`}
             <DisplayMatrix rows={rows} columns={columns} matrix={matrix} />
           $$</p>
         )

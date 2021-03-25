@@ -7,18 +7,18 @@ export default class SelectOperationDetail extends Component {
   static contextType = OperationContext;
 
   render() {
-    const classes = 'operation-detail centre';
-    const { setContext } = this.context;
+    const classes = 'custom-control custom-switch';
+    const { setContext, showSteps } = this.context;
+
+    let label = showSteps ? 'Hide Steps' : 'Show Steps';
 
     return (
       <div className={classes}>
-        <select onChange={() => {
-          const target = { name: 'showSteps', value: eval(event.target.value) };
-          {setContext(target)}
-        }} className="custom-select custom-select-sm">
-          <option value='false' defaultValue>Hide Steps</option>
-          <option value='true'>Show Steps</option>
-        </select>
+      <input type="checkbox" className="custom-control-input toggleSteps" id="toggleSteps" onChange={() => {
+        const target = { name: 'showSteps', value: !showSteps };
+        {setContext(target)}
+      }}/>
+      <label className="toggleSteps-label custom-control-label" htmlFor="toggleSteps">{label}</label>
       </div>
     )
   }

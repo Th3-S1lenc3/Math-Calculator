@@ -11,12 +11,12 @@ export default class ScalarMultiplication extends Component {
   scalarMultiplication() {
     console.log('Multiplying Matrix by scalar');
     const { showSteps } = this.context;
-    let matrices = copy(getMatrices());
-    let matricesOrignal = copy(getMatrices());
+    let matrices = getMatrices();
+    let matricesOrignal = copy(matrices);
     let scalar = getScalar();
     let matrix = copy(matrices[0]);
-    let rows = matrix.length;
-    let columns = matrix[0].length;
+    const rows = matrix.length;
+    const columns = matrix[0].length;
     let newMatrix = newExecuteMatrix(rows, columns);
     let key = 0 + '-';
 

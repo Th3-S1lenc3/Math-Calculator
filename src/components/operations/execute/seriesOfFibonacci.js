@@ -11,8 +11,8 @@ export default class SeriesOfFibonacci extends Component {
     console.log('Calculating Fibonacci Numbers');
     const { showSteps } = this.context;
     let bounds = getFibonacciBounds();
-    let x = bounds[0];
-    let y = bounds[1];
+    const x = bounds[0];
+    const y = bounds[1];
     let fibonacciNumbers = [];
     let key = 0 + '-';
 
@@ -62,7 +62,7 @@ export default class SeriesOfFibonacci extends Component {
 
     outputTmp = (
       <p key={key + 4}>$$
-        F_{`{n}`} \to {`\\{ n | n \\in \\Bbb{R}, x \\le n \\le y\\}`} = {`\\{` + fibonacciNumbers + `\\}`}
+        F_{`{n}`} \to {`\\{ n | n \\in \\Bbb{R}, x \\le n \\le y\\}`} = {`\\{${fibonacciNumbers}\\}`}
       $$</p>
     )
     output.push(outputTmp);

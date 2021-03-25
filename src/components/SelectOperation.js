@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './css/SelectOperation.css';
 
 import { OperationContext } from './OperationContext';
 

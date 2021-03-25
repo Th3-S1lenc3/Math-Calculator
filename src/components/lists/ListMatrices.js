@@ -148,9 +148,10 @@ export default class ListMatrices extends Component {
     if (identifier == "matrix") {
       if (rule != "one") {
         let lastMatrix = Object.keys(matrices).pop();
+        let { rows, columns } = matrices[lastMatrix];
         let lastMatrixID = Number(lastMatrix.split('_')[1]);
         let newMatrix = 'matrix_' + (lastMatrixID + 1);
-        let target = { matrix: newMatrix, value: {rows: 2, columns: 2}};
+        let target = { matrix: newMatrix, value: {rows: rows, columns: columns}};
         updateMatrix(target);
       }
       return;

@@ -13,12 +13,11 @@ export function getMatrices() {
       let row = matrix.querySelector('#row-' + r);
       for (let c = 1; c <= cols.length; c++) {
         let column = row.querySelector('#column-' + c);
-        newMatrix[r - 1][c - 1] = Number(column.children[0].innerText);
+        newMatrix[r - 1][c - 1] = Number(column.children[0].innerText) ?? 0;
       }
     }
     dictMatrices[m-1] = newMatrix;
   }
-  console.log(dictMatrices);
   return dictMatrices;
 }
 
@@ -35,12 +34,10 @@ export function getLinearEquationsAsAugmentedMatrix() {
   let augmentedMatrix = newExecuteMatrix(equations.length, variableCount.length);
 
   for (let e = 1; e <= equations.length; e++) {
-    console.log("equation-" + e);
     let equation = equations[e - 1];
     let variables = equations[e - 1].querySelectorAll('.equation-variable');
     let operators = equations[e - 1].querySelectorAll('.equation-operator');
     for (let v = 1; v <= variables.length; v++) {
-        console.log("variable-" + v);
         let variable = variables[v - 1];
         let value = Number(variable.children[0].innerText);
         if (v != 1) {
@@ -73,14 +70,11 @@ export function parseLinearEquationToDisplayString() {
   let displayString = "\\begin{array}{r}";
 
   for (let e = 1; e <= equations.length; e++) {
-    console.log("equation-" + e);
     let equation = equations[e - 1];
     let variables = equations[e - 1].querySelectorAll('.equation-variable');
     let operators = equations[e - 1].querySelectorAll('.equation-operator');
     let char = equations[e - 1].querySelectorAll('.equation-char');
     for (let v = 1; v <= variables.length; v++) {
-      console.log("variable-" + v);
-      console.log("char-" + v);
       let value = Number(variables[v - 1].children[0].innerText)
       displayString += ifDecimalC2Fraction(value ? value : 1);
       displayString += char[v - 1].innerText;
@@ -153,6 +147,7 @@ export function getDiceInputs() {
 }
 
 export function getSequence() {
+  console.log(document.querySelector('.sequenceInput').innerText);
   return document.querySelector('.sequenceInput').innerText;
 }
 

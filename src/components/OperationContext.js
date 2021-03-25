@@ -71,6 +71,7 @@ export default class OperationContextProvider extends React.Component {
       }
     }));
 
+    setTimeout(() => {console.log(this.state)}, 1);
     setTimeout(() => {MathJax.typeset()}, 1);
   }
 
@@ -87,6 +88,7 @@ export default class OperationContextProvider extends React.Component {
       }));
     }
 
+    setTimeout(() => {console.log(this.state)}, 1);
     setTimeout(() => {MathJax.typeset()}, 1);
   }
 

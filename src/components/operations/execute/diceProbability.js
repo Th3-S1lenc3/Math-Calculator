@@ -8,15 +8,14 @@ import { newExecuteMatrix, ifDecimalC2Fraction, getDiceInputs, copy, factorial }
 export default class DiceProbability extends Component {
   static contextType = OperationContext
 
-  binomial(n, k) {
-    let result = (factorial(n) / (factorial(k) * factorial(n-k)));
-    return result;
-  }
-
   diceProbability() {
     const { showSteps } = this.context
     let inputs = copy(getDiceInputs());
-    let key = 0 + '-'
+    let key = 0 + '-';
+
+    const binomial = (n, k) => {
+      return (factorial(n) / (factorial(k) * factorial(n-k)));
+    }
 
     let targetSum = inputs[0];
     let dice = inputs[1];
@@ -84,8 +83,8 @@ export default class DiceProbability extends Component {
 
     for (let k = 0; k <= j; k++) {
       let x = Math.pow(-1, k);
-      let y = this.binomial(n, k);
-      let z = this.binomial((r - s * k - 1), (n - 1))
+      let y = binomial(n, k);
+      let z = binomial((r - s * k - 1), (n - 1))
 
       p += x * y * z
     }

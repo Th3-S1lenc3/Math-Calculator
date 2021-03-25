@@ -9,6 +9,11 @@
   height: 100%;
   display: flex !important;
   align-items: center;
+  flex-flow: wrap;
+}
+
+line-break {
+  width: 100%;
 }
 
 .operator {
@@ -32,12 +37,12 @@
   background-position: top left, top right, bottom left, bottom right;
   border: solid var(--border-color);
   border-width: 0 2px;
-
   min-width: 60px;
+  padding: .25rem !important;
 }
 
-.sequenceInput {
-  min-width: 153px;
+.sequenceInput-container {
+  margin: 0;
 }
 
 [contenteditable=true]:empty:before {
