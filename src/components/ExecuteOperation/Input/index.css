@@ -1,0 +1,78 @@
+.operationInput-Container {
+  grid-column: 1;
+  grid-row: 1;
+  overflow-x: auto;
+}
+
+.operationInput {
+  width: 100%;
+  height: 100%;
+  display: flex !important;
+  align-items: center;
+  flex-flow: wrap;
+}
+
+.operationInput-vectorTransforms {
+  width: 100%;
+  height: 100%;
+  display: grid !important;
+  grid-gap: .25rem;
+  grid-template-rows: 1fr;
+  grid-template-columns: max-content;
+}
+
+.vectorInput {
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+  flex-flow: wrap;
+}
+
+.transformInput, .thetaInput {
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  flex-flow: wrap;
+}
+
+.vector-btnContainer {
+  grid-row: 1;
+  grid-column: 3;
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: column;
+}
+
+line-break {
+  width: 100%;
+}
+
+.operator {
+  font-size: 24px;
+  transform: translateY(6px);
+}
+
+.specialOperator {
+  font-size: 21px;
+  transform: translateY(9px);
+}
+
+.matrix {
+  --border-color: #000000;
+  background-image: linear-gradient(var(--border-color), var(--border-color)),
+                    linear-gradient(var(--border-color), var(--border-color)),
+                    linear-gradient(var(--border-color), var(--border-color)),
+                    linear-gradient(var(--border-color), var(--border-color));
+  background-repeat: no-repeat;
+  background-size: 8px 2px;
+  background-position: top left, top right, bottom left, bottom right;
+  border: solid var(--border-color);
+  border-width: 0 2px;
+  padding: .25rem !important;
+}
+
+.sequenceInput-container {
+  margin: 0;
+}

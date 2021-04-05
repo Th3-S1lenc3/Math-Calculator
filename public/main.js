@@ -1,7 +1,8 @@
-const { app, BrowserWindow} = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
 const url = require('url');
 const isDev = require('electron-is-dev');
+const isMac = process.platform === 'darwin';
 
 function createWindow() {
   let width = 900;
@@ -16,7 +17,7 @@ function createWindow() {
     }
   });
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
   mainWindow.on('closed', () => mainWindow = null);
 }
 

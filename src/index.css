@@ -35,3 +35,12 @@ body {
   border-radius: 8px;
   background-color: rgba(0, 0, 0, .5);
 }
+
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  color:gray;
+}
+
+[contenteditable=true] br{
+  display:none;
+}

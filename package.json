@@ -7,7 +7,7 @@
   },
   "private": true,
   "license": "MIT",
-  "version": "2.0.0",
+  "version": "2.1.0-alpha",
   "build": {
     "appId": "com.Th3_S1lenc3.math-calculator",
     "files": [
@@ -29,6 +29,7 @@
     }
   },
   "dependencies": {
+    "@craco/craco": "^6.1.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
@@ -38,14 +39,16 @@
     "electron-remote": "^1.3.0",
     "fraction.js": "^4.0.13",
     "jquery": "^3.5.1",
+    "jsxgraph-react-js": "^1.0.4",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.0",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-flow-renderer": "^9.4.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "electron-dev": "concurrently \"BROWSER=none npm run start\" \"wait-on http://localhost:3000 && electron .\"",
     "compile": "npm run build && electron-builder -c.extraMetadata.main=build/main.js"

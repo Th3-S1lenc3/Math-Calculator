@@ -36,7 +36,7 @@ Project is created with:
 
 ### Option 1: Download a prebuilt binary
 
-Go to the [Releases](https://github.com/Th3-S1lenc3/Math-Calculator/releases) tab and download the release for your operating system.
+Go to the [Releases](https://github.com/Th3-S1lenc3/Math-Calculator/releases) page and download the release for your operating system.
 
 On Linux, you will need to `chmod +x` the AppImage file in order to run it.
 

@@ -1,0 +1,19 @@
+.sidebar {
+  display: grid !important;
+  grid-gap: .25rem;
+  grid-template-rows: max-content;
+  grid-template-columns: 1fr;
+}
+
+.matrices {
+  transform: translateY(10%);
+}
+
+.toggleMatrixOperations-label, .toggleSteps-label, .toggleVectorRotation-label, .toggleOutputDetail-label{
+  font-size: 13px;
+}
+
+.list-inner {
+  height: calc(100vh - 285px);
+  overflow-y: auto;
+}

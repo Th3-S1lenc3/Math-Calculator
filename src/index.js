@@ -6,7 +6,7 @@ import { MathJaxContext } from 'better-react-mathjax';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
-import Main from './components/Main';
+import Main from './components';
 
 ReactDOM.render(
   <React.StrictMode>
