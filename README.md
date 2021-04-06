@@ -2,17 +2,17 @@
 
 Math-Calculator is a calculator for math operations created with Node.js, Electron & React.
 
-*( Jump to: [General Information](#generalinformation) - [Technologies](#technologies) - [Installation & Usage](#installation&usage) - [License](#license) )*
+*( Jump to: [Technologies](#technologies) - [Installation & Usage](#installation--usage) - [License](#license) )*
 
-# General Information
-
-This project is a calculator for math operations including:
+The calculations this program can perform are:
 
  - Matrix operations
  - Solving systems of linear equations
- - Fibonacci Sequence
+ - Calculating the series of a subset of the Fibonacci Sequence
  - Probability of rolling r on n, s-sided die
  - Recursive sorting of digits
+ - Vector transformation & rotation
+ - Calculating the minimum number of hops between two nodes in an adjacency graph
 
 If you experience a problem, search through the [Issues](https://github.com/Th3-S1lenc3/Math-Calculator/issues) to see if yours has already been reported. If you're confident it hasn't been reported yet, feel free to open up a new one. If you see your issue and it's been closed, it probably means that the fix for it will ship in the next version, and you'll have to wait a bit.
 
@@ -21,15 +21,18 @@ If you experience a problem, search through the [Issues](https://github.com/Th3-
 
 Project is created with:
 
-- bootstrap: 4.6.0
-- fraction.js: 4.0.13
-- jquery: 3.5.1
-- better-react-mathjax: 0.0.20-beta
-- electron: 12.0.1
-- react: 17.0.1
-- react-fontawesome: 0.1.14
-- fontawesome-svg-core: 1.2.35
-- free-solid-svg-icons : 5.15.3
+ - @fortawesome/fontawesome-svg-core: 1.2.35
+ - @fortawesome/free-solid-svg-icons: 5.15.3
+ - @fortawesome/react-fontawesome: 0.1.14
+ - better-react-mathjax: 1.0.1
+ - bootstrap: 4.6.0
+ - electron: 12.0.2
+ - fraction.js: 4.0.13
+ - jquery: 3.6.0
+ - jsxgraph-react-js: 1.0.4
+ - react: 17.0.2
+ - react-bootstrap: 1.5.2
+ - react-flow-renderer: 9.4.4
 
 # Installation & Usage
 [Back to top](#math-calculator)
