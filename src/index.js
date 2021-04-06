@@ -8,9 +8,13 @@ import './index.css';
 
 import Main from './components';
 
+const config = {
+  hideUntilTypeset: "every",
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <MathJaxContext>
+    <MathJaxContext config={config}>
       <Main />
     </MathJaxContext>
   </React.StrictMode>,
