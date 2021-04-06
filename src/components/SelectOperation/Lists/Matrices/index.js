@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { OperationContext } from '@OperationContext';
-import DropdownBtn from '../DropdownBtn';
+import DropdownBtn from '@utilities/DropdownBtn';
 
 class F extends Component {
   render() {

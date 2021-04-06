@@ -147,8 +147,16 @@ export function getDiceInputs() {
 }
 
 export function getSequence() {
-  console.log(document.querySelector('.sequenceInput').innerText);
   return document.querySelector('.sequenceInput').innerText;
+}
+
+export function getNodes() {
+  let output = [];
+
+  document.querySelectorAll('.node').forEach((value) => {
+    output.push(value.innerText || value.getAttribute('placeholder'));
+  });
+  return output;
 }
 
 export function fibonacci(n) {

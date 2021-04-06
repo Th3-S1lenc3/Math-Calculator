@@ -29,9 +29,9 @@ export default class AdjacencyGraph extends Component {
     return (
         <div className={classes}>
           Calculate the shortest path between Node:<Space />
-          <Span type='alphanumeric' placeholder={placeholder_A} /><Space />
+          <Span className="node" type='alphanumeric' placeholder={placeholder_A} /><Space />
           and Node:<Space />
-          <Span type='alphanumeric' placeholder={placeholder_B} />
+          <Span className="node" type='alphanumeric' placeholder={placeholder_B} />
         </div>
     )
   }

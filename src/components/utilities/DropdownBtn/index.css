@@ -34,3 +34,8 @@
   display: none;
   padding-left: 8px;
 }
+
+.dropdown-container-open {
+  display: block;
+  padding-left: 8px;
+}

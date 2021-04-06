@@ -193,13 +193,30 @@ export default class OperationContextProvider extends React.Component {
     updateNode: (target) => {
       const update = (target) => {
         const { node, value } = target;
+        let executePrev = this.state.execute;
+        let execute;
+
+        if (executePrev) {
+          execute = false;
+        }
+        else {
+          execute = executePrev;
+        }
 
         this.setState((prevState) => ({
+          execute: execute,
           nodes: {
             ...prevState.nodes,
             [node]: value,
           }
         }));
+
+        setTimeout(() => {
+          this.setState(() => ({
+            execute: executePrev,
+          }));
+        }, 1);
+        setTimeout(() => {MathJax.typeset()}, 1);
       }
 
       if (Array.isArray(target)) {
@@ -217,17 +234,31 @@ export default class OperationContextProvider extends React.Component {
     deleteNode: (target) => {
       const update = (target) => {
         const { node } = target;
+        let executePrev = this.state.execute;
+        let execute;
+
+        if (executePrev) {
+          execute = false;
+        }
+        else {
+          execute = executePrev;
+        }
 
         let nodes = JSON.parse(JSON.stringify(this.state.nodes));
 
         let delCheck = delete nodes[node];
 
-        console.log(node, delCheck);
-
         if (delCheck) {
           this.setState(() => ({
+            execute: execute,
             nodes: nodes
           }));
+          setTimeout(() => {
+            this.setState(() => ({
+              execute: executePrev,
+            }));
+          }, 1);
+          setTimeout(() => {MathJax.typeset()}, 1);
         }
       }
 
