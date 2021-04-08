@@ -106,11 +106,13 @@ const menuTemplate = [
           await shell.openExternal(path.join(homepage, 'issues'))
         }
       },
+      {
+        label: `Version ${app.getVersion()}`,
+        enabled: false,
+      },
     ]
   }
 ];
-const menu = Menu.buildFromTemplate(menuTemplate);
-Menu.setApplicationMenu(menu);
 
 function createWindow() {
   let width = 900;
@@ -129,7 +131,11 @@ function createWindow() {
   mainWindow.on('closed', () => mainWindow = null);
 }
 
-app.on('ready', createWindow);
+app.on('ready', () => {
+  createWindow();
+  const menu = Menu.buildFromTemplate(menuTemplate);
+  Menu.setApplicationMenu(menu);
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
