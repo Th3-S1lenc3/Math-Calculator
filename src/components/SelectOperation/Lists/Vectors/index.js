@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import { OperationContext } from '@OperationContext';
 
@@ -57,7 +57,7 @@ export default class Vectors extends Component {
   listDimensions() {
     const { type, dimensions, setContext } = this.context;
     let dimensionCount = dimensions['count'];
-    let key = 0 + '-';
+    let key = '0-';
     let state;
 
     let output = [];
@@ -105,9 +105,9 @@ export default class Vectors extends Component {
 
   render() {
     return (
-      <>
+      <Fragment>
         {this.listDimensions()}
-      </>
+      </Fragment>
     )
   }
 }

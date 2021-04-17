@@ -15,18 +15,19 @@ import Vectors from './Lists/Vectors';
 import AdjacencyGraph from './Lists/AdjacencyGraph';
 import ListDefault from './Lists';
 
-const lists = {
-  listMatrices: Matrices,
-  listEquations: Equations,
-  listVectors: Vectors,
-  listAdjacencyGraph: AdjacencyGraph,
-  default: ListDefault,
-}
-
 export default class SelectOperationContainer extends Component {
   static contextType = OperationContext;
 
+  lists = {
+    listMatrices: Matrices,
+    listEquations: Equations,
+    listVectors: Vectors,
+    listAdjacencyGraph: AdjacencyGraph,
+    default: ListDefault,
+  }
+
   render() {
+    const rules = this.rules;
     const classes = 'select-operation-container navbar navbar-expand-md navbar-dark bg-dark fixed-left';
     const { setContext, showMatrixOperations, type, showListInfo } = this.context;
     let showAttributes;

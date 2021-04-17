@@ -46,7 +46,7 @@ export default class MultiplyMatrices extends Component {
     }
 
     newMatrix = matrices.reduce((resultantMatrix, matrix, i) => {
-      let key = i + '-';
+      let key = `${i}-`;
       let numberedMatrix = ordinal_suffix_of(i+1);
       let matrix1 = copy(resultantMatrix);
 
@@ -73,13 +73,13 @@ export default class MultiplyMatrices extends Component {
         if (i == 1) {
           outputTmp = (
             <p key={key + 1}>$$Multiply\ the\ rows\ of\ the\ {ordinal_suffix_of(1)}\ matrix\ by\ the\ columns\ of\ the\ {ordinal_suffix_of(2)}\ matrix: $$</p>
-          )
+          );
           output.push(outputTmp);
         }
         else {
           outputTmp = (
             <p key={key + 1}>$$Multiply\ the\ rows\ of\ the\ resultant\ matrix by\ the\ columns\ of\ the\ {numberedMatrix}\ matrix: $$</p>
-          )
+          );
           output.push(outputTmp);
         }
 
@@ -105,7 +105,7 @@ export default class MultiplyMatrices extends Component {
     let outputHold = [];
 
     for (let j = 1; j <= matricesOrignal.length; j++) {
-      var key = j + '_';
+      var key = `${j}_`;
       let matrix = matricesOrignal[j-1];
 
       if (j != matricesOrignal.length) {
@@ -113,7 +113,7 @@ export default class MultiplyMatrices extends Component {
           <p key={key + 1}>\(
             <DisplayMatrix rows={rows} columns={columns} matrix={matrix} /> \cdot
           \)</p>
-        )
+        );
         outputHold.push(outputTmp);
       }
       else {
@@ -122,7 +122,7 @@ export default class MultiplyMatrices extends Component {
             <DisplayMatrix rows={rows} columns={columns} matrix={matrix} /> =
             <DisplayMatrix rows={rows} columns={columns} matrix={newMatrix} />
           \)</p>
-        )
+        );
         outputHold.push(outputTmp);
       }
     }
@@ -132,7 +132,6 @@ export default class MultiplyMatrices extends Component {
         {outputHold}
       </div>
     );
-
     output.push(outputTmp);
 
     return output;

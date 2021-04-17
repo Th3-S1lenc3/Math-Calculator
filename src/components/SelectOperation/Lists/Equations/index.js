@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import { OperationContext } from '@OperationContext';
 
@@ -71,9 +71,9 @@ export default class Equations extends Component {
 
   render() {
     return (
-      <>
+      <Fragment>
         {this.listEquations()}
-      </>
+      </Fragment>
     )
   }
 }

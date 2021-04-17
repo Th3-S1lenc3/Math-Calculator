@@ -1,15 +1,10 @@
-import React, { useContext } from 'react';
-import ReactDOM from "react-dom";
+import React, { Component } from 'react';
 import './index.css';
 
 import ExecuteOperationInput from './Input';
 import ExecuteOperationOutput from './Output';
 
-export default class ExecuteOperationContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default class ExecuteOperationContainer extends Component {
   render() {
     const classesOuter = 'execute-operation-container';
     const classesInner = 'execute-operation-container-inner'

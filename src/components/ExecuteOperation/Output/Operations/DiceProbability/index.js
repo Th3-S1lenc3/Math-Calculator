@@ -15,9 +15,9 @@ export default class DiceProbability extends Component {
   static contextType = OperationContext
 
   diceProbability() {
-    const { showSteps } = this.context
+    const { showSteps } = this.context;
     let inputs = copy(getDiceInputs());
-    let key = 0 + '-';
+    let key = '0-';
 
     const binomial = (n, k) => {
       return (factorial(n) / (factorial(k) * factorial(n-k)));
@@ -37,8 +37,7 @@ export default class DiceProbability extends Component {
         <p key={key + 1}>$$
           Given\ the\ target\ sum\ is\ greater\ than\ the\ largest\ possible\ sum\ ({dice * sides})\ the\ probability\ is\ 0.
         $$</p>
-      )
-
+      );
       output.push(outputTmp);
 
       return output;
@@ -49,24 +48,21 @@ export default class DiceProbability extends Component {
         <p key={key + 2}>$$
           Calculate\ probability:
         $$</p>
-      )
-
+      );
       output.push(outputTmp);
 
       outputTmp = (
         <p key={key + 3}>$$
           Let\ j = \left\lfloor \frac{`{r-n}{s}`} \right\rfloor
         $$</p>
-      )
-
+      );
       output.push(outputTmp);
 
       outputTmp = (
         <p key={key + 4}>$$
           P(r, n, s) = \frac{`{1}{s^n}`} \sum_{`{k=0}^{j}`}(-1)^k \binom{`{n}{k}`} \binom{`{r-s \\cdot k-1}{n-1}`}
         $$</p>
-      )
-
+      );
       output.push(outputTmp);
     }
 
@@ -80,8 +76,7 @@ export default class DiceProbability extends Component {
         <p key={key + 6}>$$
           P({r}, {n}, {s}) = \frac{`{1}{${Math.pow(s,n)}}`} \sum_{`{k=0}^{${j}}`}(-1)^k \binom{`{${n}}{k}`} \binom{`{${r} + ${s} \\cdot k-1}{${n} - 1}`}
         $$</p>
-      )
-
+      );
       output.push(outputTmp);
     }
 
@@ -110,8 +105,7 @@ export default class DiceProbability extends Component {
         <p key={key + 7}>$$
           P({r}, {n}, {s}) = {probability}
         $$</p>
-      )
-
+      );
       output.push(outputTmp);
     }
 
@@ -119,16 +113,14 @@ export default class DiceProbability extends Component {
       <p key={key + 8}>$$
         Result:
       $$</p>
-    )
-
+    );
     output.push(outputTmp);
 
     outputTmp = (
       <p key={key + 9}>$$
         Probability\ of\ rolling\ exactly\ {r}\ on\ {n},\ {s}-sided\ die\ is\ {probability}\ or\ {probabilityAsPercentage}
       $$</p>
-    )
-
+    );
     output.push(outputTmp);
 
     return output;

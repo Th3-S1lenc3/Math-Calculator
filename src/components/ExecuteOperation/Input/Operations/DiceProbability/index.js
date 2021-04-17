@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { MathJax } from 'better-react-mathjax';
 
 import ScalarInput from '@utilities/ScalarInput';
-
-const Space = () => <>&nbsp;</>;
+import Span from '@utilities/Span';
 
 export default class DiceProbability extends Component {
 
@@ -12,12 +11,12 @@ export default class DiceProbability extends Component {
 
     return(
       <div className={classes}><p>
-        Probability of rolling exactly<Space />
-        <span className="diceInput" contentEditable='true' placeholder="Target Sum"/><Space />
-        using<Space />
-        <span className="diceInput" contentEditable='true' placeholder="Number of Dice"/><Space />
-        fair<Space />
-        <span className="diceInput" contentEditable='true' placeholder="Number of Sides"/><Space />
+        Probability of rolling exactly{' '}
+        <Span className="diceInput" type="number" placeholder="Target Sum" />{' '}
+        using{' '}
+        <Span className="diceInput" type="number" placeholder="Number of Dice" />{' '}
+        fair{' '}
+        <Span className="diceInput" type="number" placeholder="Number of Sides" />{' '}
         sided die.
       </p></div>
     )

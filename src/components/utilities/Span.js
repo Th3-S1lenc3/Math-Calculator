@@ -51,18 +51,18 @@ export default class Span extends Component {
         case 'number':
           return (
             <span className={classes} contentEditable='true' onKeyDown={this.validateNumerical} placeholder={placeholder}/>
-          )
+          );
           break;
         case 'sequence':
-        classes = className || '';
-        return (
-          <span className={classes} contentEditable='true' onKeyDown={this.validateSequence} placeholder={placeholder}/>
-        )
+          classes = className || '';
+          return (
+            <span className={classes} contentEditable='true' onKeyDown={this.validateSequence} placeholder={placeholder}/>
+          );
           break;
         default:
           return (
             <span className={classes} contentEditable='true' placeholder={placeholder}/>
-          )
+          );
           break;
       }
 
@@ -70,9 +70,7 @@ export default class Span extends Component {
     else {
       return (
         <span className={classes} contentEditable='true' placeholder={placeholder}/>
-      )
+      );
     }
-
-
   }
 }

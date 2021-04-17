@@ -19,7 +19,7 @@ export default class TransposeMatrix extends Component {
       let columns = matrices[matrix].columns;
       let matrixID = matrix.split('_')[1];
 
-      let key = i + '-';
+      let key = `${i}-`;
 
       outputTmp = (
         <Matrix key={key + 1} id={matrixID} rows={rows} cols={columns} />

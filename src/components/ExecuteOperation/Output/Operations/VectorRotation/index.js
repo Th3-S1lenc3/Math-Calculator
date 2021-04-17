@@ -99,7 +99,7 @@ export default class VectorRotation extends Component {
     let columns = vector[0].length;
     let newMatrix = newExecuteMatrix(rows, columns);
 
-    let key = 0 + '-';
+    let key = '0-';
     let output = [];
     let outputTmp;
 
@@ -124,7 +124,7 @@ export default class VectorRotation extends Component {
           R(\theta) =
           <DisplayMatrix rows={rM_rows} columns={rM_columns} matrix={rotationMatrix} />
         $$</p>
-      )
+      );
       output.push(outputTmp);
 
       outputTmp = (
@@ -142,13 +142,13 @@ export default class VectorRotation extends Component {
           /> =
           <DisplayMatrix rows={nV_rows} columns={nV_columns} matrix={newVector} />
         $$</p>
-      )
+      );
       output.push(outputTmp);
     }
 
     outputTmp = (
       <p key={1}>$$Result: $$</p>
-    )
+    );
     output.push(outputTmp);
 
     outputTmp = (

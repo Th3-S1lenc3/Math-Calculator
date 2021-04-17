@@ -55,12 +55,11 @@ export default class PlotVectorTransformation extends Component {
     let boundsX = [
       vector[0],
       transformedVector[0],
-
     ];
 
     let boundsY = [
       vector[1],
-      transformedVector[1]
+      transformedVector[1],
     ]
 
     let logicJS = (board) => {
@@ -85,7 +84,7 @@ export default class PlotVectorTransformation extends Component {
           enabled: true
         },
       }} />
-    )
+    );
   }
 
   render() {

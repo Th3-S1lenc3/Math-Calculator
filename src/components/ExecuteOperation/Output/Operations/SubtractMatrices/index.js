@@ -35,7 +35,7 @@ export default class SubtractMatrices extends Component {
     }
 
     newMatrix = matrices.reduce((resultantMatrix, matrix, i) => {
-      let key = i + '-';
+      let key = `${i}-`;
       let numberedMatrix = ordinal_suffix_of(i+1);
       let matrix1 = copy(resultantMatrix);
 
@@ -48,13 +48,13 @@ export default class SubtractMatrices extends Component {
         if (i == 1) {
           outputTmp = (
             <p key={key + 1}>$$Subtract\ the\ elements\ in\ the\ matching\ positions\ on\ the\ {ordinal_suffix_of(1)}\ and\ {ordinal_suffix_of(2)}\ matrix: $$</p>
-          )
+          );
           output.push(outputTmp);
         }
         else {
           outputTmp = (
             <p key={key + 1}>$$Subtract\ the\ elements\ in\ the\ matching\ positions\ on\ the\ resultant\ matrix\ and\ the\ {numberedMatrix}\ matrix: $$</p>
-          )
+          );
           output.push(outputTmp);
         }
 
@@ -66,7 +66,7 @@ export default class SubtractMatrices extends Component {
             <DisplayMatrix rows={rows} columns={columns} matrix={matrix1} separator={'-'} matrix2={matrix} /> =
             <DisplayMatrix rows={rows} columns={columns} matrix={resultantMatrix} />
           $$</p>
-        )
+        );
         output.push(outputTmp);
       }
 
@@ -75,13 +75,13 @@ export default class SubtractMatrices extends Component {
 
     outputTmp = (
       <p key={1}>$$Result: $$</p>
-    )
+    );
     output.push(outputTmp);
 
     let outputHold = [];
 
     for (let j = 1; j <= matricesOrignal.length; j++) {
-      var key = j + '_';
+      var key = `${j}_`;
       let matrix = matricesOrignal[j-1];
 
       if (j != matricesOrignal.length) {
@@ -89,7 +89,7 @@ export default class SubtractMatrices extends Component {
           <p key={key + 1}>\(
             <DisplayMatrix rows={rows} columns={columns} matrix={matrix} /> -
           \)</p>
-        )
+        );
         outputHold.push(outputTmp);
       }
       else {
@@ -98,7 +98,7 @@ export default class SubtractMatrices extends Component {
             <DisplayMatrix rows={rows} columns={columns} matrix={matrix} /> =
             <DisplayMatrix rows={rows} columns={columns} matrix={newMatrix} />
           \)</p>
-        )
+        );
         outputHold.push(outputTmp);
       }
     }
@@ -108,7 +108,6 @@ export default class SubtractMatrices extends Component {
         {outputHold}
       </div>
     );
-
     output.push(outputTmp);
 
     return output;

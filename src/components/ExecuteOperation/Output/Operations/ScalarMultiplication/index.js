@@ -25,22 +25,23 @@ export default class ScalarMultiplication extends Component {
     const rows = matrix.length;
     const columns = matrix[0].length;
     let newMatrix = newExecuteMatrix(rows, columns);
-    let key = 0 + '-';
+    let key = '0-';
 
     let output = [];
     let outputTmp;
 
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < columns; c++) {
-        newMatrix[r][c] = matrix[r][c] * scalar
+        newMatrix[r][c] = matrix[r][c] * scalar;
       }
     }
 
     if (showSteps) {
       outputTmp = (
         <p key={key + 1}>$$Multiply\ each\ element\ of\ the\ matrix\ by\ the\ scalar: $$</p>
-      )
+      );
       output.push(outputTmp);
+
       outputTmp = (
         <p key={key + 2}>$$
           {ifDecimalC2Fraction(scalar)} \cdot
@@ -48,13 +49,13 @@ export default class ScalarMultiplication extends Component {
           <DisplayMatrix rows={rows} columns={columns} matrix={matrix} separator={'\\cdot'} scalar={scalar} /> =
           <DisplayMatrix rows={rows} columns={columns} matrix={newMatrix} />
         $$</p>
-      )
+      );
       output.push(outputTmp);
     }
 
     outputTmp = (
       <p key={1}>$$Result: $$</p>
-    )
+    );
     output.push(outputTmp);
 
     let outputHold = [];
@@ -65,8 +66,7 @@ export default class ScalarMultiplication extends Component {
         <DisplayMatrix rows={rows} columns={columns} matrix={matrix} /> =
         <DisplayMatrix rows={rows} columns={columns} matrix={newMatrix} />
       $$</p>
-    )
-
+    );
     outputHold.push(outputTmp);
 
     outputTmp = (
@@ -74,7 +74,6 @@ export default class ScalarMultiplication extends Component {
         {outputHold}
       </div>
     );
-
     output.push(outputTmp);
 
     return output;

@@ -1,19 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 export const OperationContext = React.createContext();
 
-const rules = {
-  addMatrices: 'square',
-  subtractMatrices: 'square',
-  multiplyMatrices: 'rectangle',
-  scalarMultiplication: 'one',
-  divideMatrices: 'square',
-  scalarDivision: 'one',
-  invertMatrix: 'one',
-  transposeMatrix: 'one',
-}
-
-export default class OperationContextProvider extends React.Component {
+export default class OperationContextProvider extends Component {
   state = {
     type: 'default',
     execute: false,
@@ -51,6 +40,7 @@ export default class OperationContextProvider extends React.Component {
       },
     },
     setContext: (target) => {
+      const rules = this.rules;
       const update = (target) => {
         const { name, value } = target;
 
@@ -274,6 +264,17 @@ export default class OperationContextProvider extends React.Component {
       setTimeout(() => {console.log(this.state)}, 1);
     },
   };
+
+  rules = {
+    addMatrices: 'square',
+    subtractMatrices: 'square',
+    multiplyMatrices: 'rectangle',
+    scalarMultiplication: 'one',
+    divideMatrices: 'square',
+    scalarDivision: 'one',
+    invertMatrix: 'one',
+    transposeMatrix: 'one',
+  }
 
   render() {
     const { children } = this.props;

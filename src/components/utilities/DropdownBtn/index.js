@@ -8,17 +8,19 @@ export default class DropdownBtn extends Component {
   state = { clicked: false };
 
   componentDidMount() {
-    const { open } = this.props;
+    const { state } = this.props;
 
-    this.setState(() => ({
-      clicked: true
-    }));
+    if (typeof state === "boolean") {
+      this.setState(() => ({
+        clicked: state
+      }));
+    }
   }
 
   toggleDropdown(event) {
     let target = event.target;
     let dropdownContent = target.nextElementSibling;
-    if (dropdownContent.style.display === "block") {
+    if (dropdownContent?.style?.display === "block") {
      dropdownContent.style.display = "none";
     }
     else {
@@ -32,6 +34,8 @@ export default class DropdownBtn extends Component {
 
   render() {
     let { id, label, showID } = this.props;
+
+    showID = showID ?? true;
 
     return (
       <button key={id} className='dropdown-btn' onClick={(event) => {this.toggleDropdown(event)}}>

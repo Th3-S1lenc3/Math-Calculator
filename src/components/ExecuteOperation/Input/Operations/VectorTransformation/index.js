@@ -1,23 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { MathJax } from 'better-react-mathjax';
 
 import { OperationContext } from '@OperationContext';
 import Matrix from '@utilities/Matrix';
 
-class F extends Component {
-  render() {
-    return (
-      <>{this.props.children}</>
-    )
-  }
-}
-const Space = () => <>&nbsp;</>;
-
 export default class VectorTransformation extends Component {
   static contextType = OperationContext;
 
   state = {
-    transformType: 'default'
+    transformType: 'default',
   }
 
   renderVectorTransformation() {
@@ -35,20 +26,20 @@ export default class VectorTransformation extends Component {
     let outputTmp;
 
     outputTmp = (
-      <F key={0}>
+      <Fragment key={0}>
         <div className="vectorInput">
           $$
             \vec{`{p}`} =
-          $$ <Space />
+          $${' '}
           <Matrix id={1} rows={count} cols={1} />
         </div>
         <div className="transformInput pl-4">
           $$
             T =
-          $$ <Space />
+          $${' '}
           <Matrix id={2} rows={count} cols={count}/>
         </div>
-      </F>
+      </Fragment>
     );
     output.push(outputTmp);
 
@@ -62,7 +53,7 @@ export default class VectorTransformation extends Component {
     }
 
     outputTmp = (
-      <F key={7}>
+      <Fragment key={7}>
         <div className='vector-btnContainer ml-auto'>
           <button className='btn btn-danger btn-md' style={displayBtnBack} onClick={() => {
             let target = [
@@ -72,7 +63,7 @@ export default class VectorTransformation extends Component {
             {setContext(target)};
           }}>Back</button>
         </div>
-      </F>
+      </Fragment>
     );
     output.push(outputTmp);
 

@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom';
 
 import { MathJaxContext } from 'better-react-mathjax';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
-import Main from './components';
+import Main from '@components';
 
 const config = {
   hideUntilTypeset: "every",
+  tex: {
+    inlineMath: [['\$', '\$'], ["\\(", "\\)"]],
+    processEscapes: true,
+  },
 }
 
 ReactDOM.render(

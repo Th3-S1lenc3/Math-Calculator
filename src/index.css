@@ -38,7 +38,7 @@ body {
 
 [contenteditable=true]:empty:before {
   content: attr(placeholder);
-  color:gray;
+  color: hsl(0, 0%, 60%);
 }
 
 [contenteditable=true] br{

@@ -17,25 +17,25 @@ export default class SystemOfLinearEquations extends Component {
     var variable;
 
     for (var i = 1; i <= variables; i++) {
-      var key = i + '-';
+      var key = `${i}-`;
       var variable_id = 'variable-' + i;
-      var char_id = 'char-' + i;
-      var operator_id = 'operator-' + i;
-      var constant_id = 'constant-' + i;
+      var char_id = `char-${i}`;
+      var operator_id = `operator-${i}`;
+      var constant_id = `constant-${i}`;
 
       variable = (
         <td key={key + 1} id={variable_id} className="equation-variable">
           <Span type="number" className="equation-input" placeholder="1" />
         </td>
-      )
-      variablesArr.push(variable)
+      );
+      variablesArr.push(variable);
 
       variable = (
         <td key={key + 2} id={char_id} className="equation-char">
           {validVariables[i-1]}
         </td>
-      )
-      variablesArr.push(variable)
+      );
+      variablesArr.push(variable);
 
       if (i != variables) {
         variable = (
@@ -47,19 +47,19 @@ export default class SystemOfLinearEquations extends Component {
               <option disabled value="divide">÷</option>
             </select>
           </td>
-        )
+        );
         variablesArr.push(variable);
       }
       else {
         variable = (
           <td key={key + 4}>=</td>
-        )
+        );
         variablesArr.push(variable);
         variable = (
           <td key={key + 5} id={constant_id} className="equation-constant">
             <Span type='number' className="equation-input" placeholder="0"/>
           </td>
-        )
+        );
         variablesArr.push(variable);
       }
     }
@@ -72,7 +72,6 @@ export default class SystemOfLinearEquations extends Component {
           {variablesArr}
         </tr>
       );
-
       equationsArr.push(equation);
     }
 
@@ -81,7 +80,7 @@ export default class SystemOfLinearEquations extends Component {
 
   render() {
     const { id } = this.props;
-    const prefixed_id = 'equationBody-' + id
+    const prefixed_id = 'equationBody-' + id;
 
     return (
       <table className="equationTable">

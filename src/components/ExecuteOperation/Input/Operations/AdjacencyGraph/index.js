@@ -3,15 +3,13 @@ import React, { Component } from 'react';
 import { OperationContext } from '@OperationContext';
 import Span from '@utilities/Span';
 
-const Space = () => <>&nbsp;</>;
-
 export default class AdjacencyGraph extends Component {
   static contextType = OperationContext;
 
   render() {
     const { nodes: nodesRaw } = this.context;
 
-    let nodes = {}
+    let nodes = {};
 
     for (let node in nodesRaw) {
       if (node.includes('node')) {
@@ -28,9 +26,9 @@ export default class AdjacencyGraph extends Component {
 
     return (
         <div className={classes}>
-          Calculate the shortest path between Node:<Space />
-          <Span className="node" type='alphanumeric' placeholder={placeholder_A} /><Space />
-          and Node:<Space />
+          Calculate the shortest path between Node:{' '}
+          <Span className="node" type='alphanumeric' placeholder={placeholder_A} />{' '}
+          and Node:{' '}
           <Span className="node" type='alphanumeric' placeholder={placeholder_B} />
         </div>
     )

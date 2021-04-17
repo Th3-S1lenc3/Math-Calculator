@@ -22,14 +22,14 @@ export default class LinearEquations extends Component {
     console.log('Solving Linear Equations');
     const { showSteps } = this.context;
     let augmentedMatrix = getLinearEquationsAsAugmentedMatrix();
-    const rows = augmentedMatrix.length
+    const rows = augmentedMatrix.length;
     const actualColumns = augmentedMatrix[0].length;
     const columns = actualColumns - 1;
     let equationRow = document.querySelector('.equation-row');
     let charCount = equationRow.querySelectorAll('.equation-char');
     let operatorCount = equationRow.querySelectorAll('.equation-operator');
     let newMatrix = newExecuteMatrix(rows, actualColumns - columns);
-    let key = 0 + '-'
+    let key = '0-';
 
     let output = [];
     let outputTmp;
@@ -75,7 +75,7 @@ export default class LinearEquations extends Component {
               output.push(outputTmp);
               outputTmp = (
                 <p key={key + 5}>\(it\ can\ be\ concluded\ that\ there\ are\ an\ infinite\ number\ of\ solutions\ to\ this\ system\ of\ linear\ equations.\)</p>
-              )
+              );
               output.push(outputTmp);
               return output;
             }
@@ -86,7 +86,7 @@ export default class LinearEquations extends Component {
               output.push(outputTmp);
               outputTmp = (
                 <p key={key + 5}>\(it\ can\ be\ concluded\ that\ there\ are\ an\ no\ solutions\ to\ this\ system\ of\ linear\ equations.\)</p>
-              )
+              );
               output.push(outputTmp);
               return output;
             }
@@ -159,7 +159,7 @@ export default class LinearEquations extends Component {
     if (verifyMatrix[0][0] != constantMatrix[0][0] && verifyMatrix[1][0] != constantMatrix[1][0]) {
       outputTmp = (
         <p key={key + 6}>\(Math\ Error.\ The\ coefficients \cdot x\ and\ y\ did\ not\ equal\ the\ constants.\)</p>
-      )
+      );
       output.push(outputTmp);
       return output;
     }

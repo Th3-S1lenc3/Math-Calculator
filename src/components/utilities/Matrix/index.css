@@ -1,0 +1,13 @@
+.matrix {
+  --border-color: var(--light);
+  background-image: linear-gradient(var(--border-color), var(--border-color)),
+                    linear-gradient(var(--border-color), var(--border-color)),
+                    linear-gradient(var(--border-color), var(--border-color)),
+                    linear-gradient(var(--border-color), var(--border-color));
+  background-repeat: no-repeat;
+  background-size: 8px 2px;
+  background-position: top left, top right, bottom left, bottom right;
+  border: solid var(--border-color);
+  border-width: 0 2px;
+  padding: .25rem !important;
+}

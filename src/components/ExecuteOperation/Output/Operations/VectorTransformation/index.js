@@ -38,7 +38,7 @@ export default class VectorTransformation extends Component {
     }
 
     newMatrix = matrices.reduce((resultantMatrix, matrix1, i) => {
-      let key = i + '-';
+      let key = `${i}-`;
       let numberedMatrix = ordinal_suffix_of(i+1);
       let matrix = copy(resultantMatrix);
 
@@ -68,7 +68,7 @@ export default class VectorTransformation extends Component {
           <p key={key + 1}>$$
             Transform\ \vec{`{p}`}\ by\ T:
           $$</p>
-        )
+        );
         output.push(outputTmp);
 
         let m1_rows = matrix1.length;
@@ -94,7 +94,7 @@ export default class VectorTransformation extends Component {
 
     outputTmp = (
       <p key={1}>$$Result: $$</p>
-    )
+    );
     output.push(outputTmp);
 
     outputTmp = (

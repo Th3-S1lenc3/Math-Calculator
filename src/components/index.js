@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
+
+import SelectOperationContainer from '@components/SelectOperation';
+import ExecuteOperationContainer from '@components/ExecuteOperation';
+import OperationContextProvider from '@components/OperationContext';
+import '@components/Prototypes/index.js';
+
 import './index.css';
-import SelectOperationContainer from './SelectOperation';
-import ExecuteOperationContainer from './ExecuteOperation';
-import OperationContextProvider from './OperationContext';
-import './Prototypes/index.js';
 
-export default class Main extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default class Main extends Component {
   render() {
     return (
       <OperationContextProvider>

@@ -1,17 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { MathJax } from 'better-react-mathjax';
 
 import { OperationContext } from '@OperationContext';
 import Matrix from '@utilities/Matrix';
 import ScalarInput from '@utilities/ScalarInput';
-
-class F extends Component {
-  render() {
-    return (
-      <>{this.props.children}</>
-    )
-  }
-}
 
 export default class ScalarDivision extends Component {
   static contextType = OperationContext
@@ -29,20 +21,20 @@ export default class ScalarDivision extends Component {
       let columns = matrices[matrix].columns;
       let matrixID = matrix.split('_')[1];
 
-      let key = i + '-';
+      let key = `${i}-`;
 
       outputTmp = (
         <Matrix key={key + 1} id={matrixID} rows={rows} cols={columns} />
-      )
+      );
 
       output.push(outputTmp);
 
       outputTmp = (
-        <F key={key + 2}>
+        <Fragment key={key + 2}>
           <p key={key + 3} className="specialOperator">$$\div$$</p>
           <ScalarInput />
-        </F>
-      )
+        </Fragment>
+      );
       output.push(outputTmp);
 
       i++;

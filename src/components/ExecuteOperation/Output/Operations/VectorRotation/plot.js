@@ -14,161 +14,79 @@ import {
 export default class PlotVectorRotation extends Component {
   static contextType = OperationContext;
 
-  identityMatrix(dimensions) {
-    let I = [];
-
-    for (let r = 0; r < dimensions; r++) {
-      I.push([]);
-      for (let c = 0; c < dimensions; c++) {
-        if (r == c) {
-          I[r].push(1);
-        }
-        else {
-          I[r].push(0);
-        }
-      }
-    }
-
-    return I;
-  }
-
   multiplyMatrices(A, B) {
     let newMatrix = [];
     let tmpValue;
-
     let rows = A.length;
     let columns = B[0].length;
 
-    if (typeof B !== 'object') {
-      for (let r = 0; r < rows; r++) {
-        newMatrix.push([]);
-        for (let col = 0; col < columns; col++) {
-          tmpValue = 0;
-          for (let c = 0; c < columns; c++) {
-            tmpValue += A[r][c] * B;
-          }
-          newMatrix[r].push(tmpValue);
-        }
-      }
-    }
-    else {
-      for (let r = 0; r < rows; r++) {
-        newMatrix.push([]);
-        for (let col = 0; col < columns; col++) {
-          tmpValue = 0;
-          for (let c = 0; c < columns; c++) {
-            tmpValue += A[r][c] * B[c][col];
-          }
-          newMatrix[r].push(tmpValue);
-        }
-      }
-    }
-
-    return newMatrix;
-  }
-
-  invertMatrix(A) {
-    let newMatrix = [];
-
-    let rows = A.length;
-    let cols = A[0].length;
-    let newCols = cols * 2;
-
-    for(let r = 0; r < rows; r++) {
+    for (let r = 0; r < rows; r++) {
       newMatrix.push([]);
-      for (let col = 0; col < cols; col++) {
-        newMatrix[r].push(A[r][col])
-      }
-      for (let column = cols; column < newCols; column++) {
-        if (r == column) {
-          newMatrix[r].push(1);
+      for (let col = 0; col < columns; col++) {
+        tmpValue = 0;
+        for (let c = 0; c < columns; c++) {
+          tmpValue += A[r][c] * B[c][col];
         }
-        else {
-          newMatrix[r].push(0);
-        }
+        newMatrix[r].push(tmpValue);
       }
     }
 
     return newMatrix;
   }
 
-  divideMatrices(A, B) {
-    let determinant = getDeterminant(B);
+  rotationMatrix_2D(theta) {
+    const { cos, sin } = Math;
+    let rotationMatrix = newExecuteMatrix(2,2);
 
-    if (determinant == 0) {
-      return;
-    }
+    rotationMatrix[0][0] = cos(theta);
+    rotationMatrix[0][1] = -sin(theta);
+    rotationMatrix[1][0] = sin(theta);
+    rotationMatrix[1][1] = cos(theta);
 
-    let newMatrix = [];
-    let tmpValue;
-
-    let rows = A.length;
-    let columns = B[0].length;
-
-    let C;
-
-    if (typeof B !== 'object') {
-      C = 1 / B;
-      for (let r = 0; r < rows; r++) {
-        newMatrix.push([]);
-        for (let col = 0; col < columns; col++) {
-          tmpValue = 0;
-          for (let c = 0; c < columns; c++) {
-            tmpValue += A[r][c] * C;
-          }
-          newMatrix[r].push(tmpValue);
-        }
-      }
-    }
-    else {
-      C = this.invertMatrix(B);
-      for (let r = 0; r < rows; r++) {
-        newMatrix.push([]);
-        for (let col = 0; col < columns; col++) {
-          tmpValue = 0;
-          for (let c = 0; c < columns; c++) {
-            tmpValue += A[r][c] * C[c][col];
-          }
-          newMatrix[r].push(tmpValue);
-        }
-      }
-    }
-
-    return newMatrix;
+    return rotationMatrix;
   }
 
-  calcRotationMatrix(vector, theta) {
-    // Implementation of the Aguilera-Perez Algorithm
-    // Thanks to jodag on stackoverflow.com for (gender ? his : her) matlab implementation
+  rotationMatrix_3D(theta) {
+    const { cos, sin } = Math;
+    let rotationMatrix_X = newExecuteMatrix(3,3);
+    let rotationMatrix_Y = newExecuteMatrix(3,3);
+    let rotationMatrix_Z = newExecuteMatrix(3,3);
 
-    const { atan2, cos, sin } = Math;
+    rotationMatrix_X[0][0] = 1;
+    rotationMatrix_X[1][1] = cos(theta);
+    rotationMatrix_X[1][2] = -sin(theta);
+    rotationMatrix_X[2][1] = sin(theta);
+    rotationMatrix_X[2][2] = cos(theta);
 
-    let n = vector.length;
-    let M = this.identityMatrix(n);
+    rotationMatrix_Y[0][0] = cos(theta);
+    rotationMatrix_Y[0][2] = sin(theta);
+    rotationMatrix_Y[1][1] = 1;
+    rotationMatrix_Y[2][0] = -sin(theta);
+    rotationMatrix_Y[2][3] = cos(theta);
 
-    for (let c = 0; c < (n - 2); c ++) {
-      for (let r = n; r >= (c + 1); r--) {
-        let t = atan2(vector[r][c], vector[r-1][c]);
-        let R = this.identityMatrix(n);
-        R[r][r] = cos(t);
-        R[r][r-1] = -sin(t);
-        R[r-1][r] = sin(t);
-        R[r-1][r-1] = cos(t);
-        vector = this.multiplyMatrices(R, vector);
-        M = this.multiplyMatrices(R, M);
-        console.log(copy(t), copy(R), copy(vector), copy(M), copy(r), copy(c))
-      }
+    rotationMatrix_Z[0][0] = cos(theta);
+    rotationMatrix_Z[0][1] = -sin(theta);
+    rotationMatrix_Z[1][0] = sin(theta);
+    rotationMatrix_Z[1][1] = cos(theta);
+    rotationMatrix_Z[2][2] = 1;
+
+    let rotationMatrix = this.multiplyMatrices(
+      this.multiplyMatrices(rotationMatrix_X, rotationMatrix_Y),
+      rotationMatrix_Z
+    );
+
+    return rotationMatrix;
+  }
+
+  calcRotationMatrix(dimensions, theta) {
+    switch (dimensions) {
+      case 2:
+        return this.rotationMatrix_2D(theta);
+        break;
+      case 3:
+        return this.rotationMatrix_3D(theta);
+        break;
     }
-
-    let R = this.identityMatrix(n);
-    R[n-2][n-2] = cos(-theta);
-    R[n-2][n-1] = -sin(-theta);
-    R[n-1][n-2] = sin(-theta);
-    R[n-1][n-1] = cos(-theta);
-
-    M = this.divideMatrices(M, this.multiplyMatrices(R, M));
-
-    return M;
   }
 
   plotVectorRotation() {
@@ -186,13 +104,12 @@ export default class PlotVectorRotation extends Component {
     let boundsX = [
       vector[0],
       transformedVector[0],
-
     ];
 
     let boundsY = [
       vector[1],
-      transformedVector[1]
-    ]
+      transformedVector[1],
+    ];
 
     let logicJS = (board) => {
       board.suspendUpdate();
@@ -216,7 +133,7 @@ export default class PlotVectorRotation extends Component {
           enabled: true
         },
       }} />
-    )
+    );
   }
 
   render() {

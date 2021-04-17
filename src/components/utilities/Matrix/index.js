@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import Span from './Span';
+import Span from '../Span';
+
+import './index.css';
 
 export default class Matrix extends Component {
 
@@ -28,7 +30,6 @@ export default class Matrix extends Component {
           {colsArr}
         </tr>
       );
-
       rowsArr.push(row);
     }
 

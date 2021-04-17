@@ -23,7 +23,7 @@ export default class TransposeMatrix extends Component {
     let rows = matrix.length;
     let columns = matrix[0].length;
     let transposedMatrix = newExecuteMatrix(columns, rows);
-    let key = 0 + '-';
+    let key = '0-';
 
     let output = [];
     let outputTmp;
@@ -31,7 +31,7 @@ export default class TransposeMatrix extends Component {
     if (showSteps) {
       outputTmp = (
         <p key={key +1}>\(Transpose\ Matrix:\)</p>
-      )
+      );
       output.push(outputTmp);
 
       outputTmp = (
@@ -39,7 +39,7 @@ export default class TransposeMatrix extends Component {
           A =
           <DisplayMatrix rows={rows} columns={columns} matrix={matrix} />
         $$</p>
-      )
+      );
       output.push(outputTmp);
     }
 
@@ -52,7 +52,7 @@ export default class TransposeMatrix extends Component {
             <p key={key + 1}>$$
               A_{`{${(r + 1) + (c + 1)}}`} \to A^{`{T}`}_{`{${(c + 1) + (r + 1)}}`}
             $$</p>
-          )
+          );
           output.push(outputTmp);
         }
       }
@@ -60,7 +60,7 @@ export default class TransposeMatrix extends Component {
 
     outputTmp = (
       <p key={key + 3}>$$Result: $$</p>
-    )
+    );
     output.push(outputTmp);
 
     outputTmp = (

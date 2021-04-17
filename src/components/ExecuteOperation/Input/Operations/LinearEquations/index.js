@@ -15,7 +15,7 @@ export default class LinearEquations extends Component {
 
     outputTmp = (
       <SystemOfLinearEquations key={0} id="1" variables={equationCount} equations={equationCount} />
-    )
+    );
 
     output.push(outputTmp);
 

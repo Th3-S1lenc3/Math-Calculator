@@ -1,24 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { MathJax } from 'better-react-mathjax';
 
 import { OperationContext } from '@OperationContext';
 import Matrix from '@utilities/Matrix';
 import Span from '@utilities/Span';
 
-class F extends Component {
-  render() {
-    return (
-      <>{this.props.children}</>
-    )
-  }
-}
-const Space = () => <>&nbsp;</>;
-
 export default class VectorRotation extends Component {
   static contextType = OperationContext;
 
   state = {
-    transformType: 'default'
+    transformType: 'default',
   }
 
   renderVectorRotation() {
@@ -36,20 +27,20 @@ export default class VectorRotation extends Component {
     let outputTmp;
 
     outputTmp = (
-      <F key={0}>
+      <Fragment key={0}>
         <div className="vectorInput">
           $$
             \vec{`{p}`} =
-          $$ <Space />
+          $${' '}
           <Matrix id={1} rows={count} cols={1} />
         </div>
         <div className="thetaInput pl-4">
           $$
             \theta =
-          $$ <Space />
+          $${' '}
           <Span type='number' className="theta" placeholder='0'/>
         </div>
-      </F>
+      </Fragment>
     );
     output.push(outputTmp);
 
@@ -63,7 +54,7 @@ export default class VectorRotation extends Component {
     }
 
     outputTmp = (
-      <F key={7}>
+      <Fragment key={7}>
         <div className='vector-btnContainer ml-auto'>
           <button className='btn btn-danger btn-md' style={displayBtnBack} onClick={() => {
             let target = [
@@ -73,7 +64,7 @@ export default class VectorRotation extends Component {
             {setContext(target)};
           }}>Back</button>
         </div>
-      </F>
+      </Fragment>
     );
     output.push(outputTmp);
 

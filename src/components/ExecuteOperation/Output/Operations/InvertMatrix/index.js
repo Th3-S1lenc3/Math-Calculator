@@ -22,12 +22,12 @@ export default class InvertMatrix extends Component {
     const { showSteps } = this.context;
     let matrices = getMatrices();
     let matricesOrignal = copy(matrices);
-    let matrix = copy(matrices[0]);;
+    let matrix = copy(matrices[0]);
     let matrixOriginal = copy(matrix);
     const rows = matrix.length;
     const columns = matrix[0].length;
     let newMatrix = newExecuteMatrix(rows, columns);
-    let key = 0 + '-'
+    let key = '0-';
 
     let output = [];
     let outputTmp;
@@ -35,7 +35,7 @@ export default class InvertMatrix extends Component {
     if (rows != columns) {
       outputTmp = (
         <p key={key + 1}>$$Invalid\ Operation.\ To\ invert\ a\ matrix\ it\ must\ be\ square.$$</p>
-      )
+      );
       output.push(outputTmp);
       return output;
     }
@@ -43,7 +43,7 @@ export default class InvertMatrix extends Component {
     if (showSteps) {
       outputTmp = (
         <p key={key + 2}>$$Check\ if\ the\ determinant\ of\ the\ matrix\ is\ not\ 0:$$</p>
-      )
+      );
       output.push(outputTmp);
     }
 
@@ -56,7 +56,7 @@ export default class InvertMatrix extends Component {
         <p key={key + 0}>$$
           A = <DisplayMatrix rows={rows} columns={columns} matrix={matrix}/>
         $$</p>
-      )
+      );
       output.push(outputTmp);
 
       outputTmp = (
@@ -65,22 +65,21 @@ export default class InvertMatrix extends Component {
           <DisplayMatrix rows={rows} columns={columns} matrix={matrix} type={'vmatrix'}/> =
           {ifDecimalC2Fraction(determinant)}
         $$</p>
-      )
-
+      );
       output.push(outputTmp);
     }
 
     if (determinant == 0) {
       outputTmp = (
         <p key={key + 3}>$$The\ determinant\ of\ the\ matrix\ is\ 0\ therefore\ the\ inverse\ cannot\ be\ determined.$$</p>
-      )
+      );
       output.push(outputTmp);
       return output;
     }
     else if (showSteps) {
       outputTmp = (
         <p key={key + 3}>$$The\ determinant\ of\ the\ matrix\ is\ not\ 0\ therefore\ an\ inverse\ exists.$$</p>
-      )
+      );
       output.push(outputTmp);
     }
 

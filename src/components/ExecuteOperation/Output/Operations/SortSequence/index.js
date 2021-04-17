@@ -46,7 +46,7 @@ export default class SortSequence extends Component {
           <p key={key}>$$
             Sort\ {ordinal_suffix_of(copy(arrayLength))}\ position:
           $$</p>
-        )
+        );
         output.push(outputTmp);
 
         outputTmp = (
@@ -55,7 +55,7 @@ export default class SortSequence extends Component {
             \to
             {`\\{${copy(array)}\\}`}
           $$</p>
-        )
+        );
         output.push(outputTmp);
       }
 
@@ -67,14 +67,14 @@ export default class SortSequence extends Component {
         <p key={key + 0}>$$
           Unordered\ Sequence:
         $$</p>
-      )
+      );
       output.push(outputTmp);
 
       outputTmp = (
         <p key={key + 1}>$$
           {`\\{${copy(sequence)}\\}`}
         $$</p>
-      )
+      );
       output.push(outputTmp);
     }
 
@@ -86,7 +86,7 @@ export default class SortSequence extends Component {
       <p key={key + 2}>$$
         Result:
       $$</p>
-    )
+    );
     output.push(outputTmp);
 
     outputTmp = (
@@ -95,7 +95,7 @@ export default class SortSequence extends Component {
         \to
         {`\\{${sequence}\\}`}
       $$</p>
-    )
+    );
     output.push(outputTmp);
 
     return output;

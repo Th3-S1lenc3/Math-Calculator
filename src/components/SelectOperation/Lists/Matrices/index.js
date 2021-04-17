@@ -1,31 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { OperationContext } from '@OperationContext';
 import DropdownBtn from '@utilities/DropdownBtn';
 
-class F extends Component {
-  render() {
-    return (
-      <>{this.props.children}</>
-    )
-  }
-}
-
-const rules = {
-  addMatrices: 'square',
-  subtractMatrices: 'square',
-  multiplyMatrices: 'rectangle',
-  scalarMultiplication: 'one',
-  divideMatrices: 'square',
-  scalarDivision: 'one',
-  invertMatrix: 'one',
-  transposeMatrix: 'one',
-}
-
 export default class Matrices extends Component {
   static contextType = OperationContext;
+
+  rules = {
+    addMatrices: 'square',
+    subtractMatrices: 'square',
+    multiplyMatrices: 'rectangle',
+    scalarMultiplication: 'one',
+    divideMatrices: 'square',
+    scalarDivision: 'one',
+    invertMatrix: 'one',
+    transposeMatrix: 'one',
+  }
 
   componentDidMount() {
     const { type } = this.context;
@@ -50,6 +42,7 @@ export default class Matrices extends Component {
   }
 
   handleDecrement(event, identifier) {
+    const rules = this.rules;
     const { type, matrices, updateMatrix, deleteMatrix } = this.context;
 
     let rule = rules[type];
@@ -128,6 +121,7 @@ export default class Matrices extends Component {
   }
 
   handleIncrement(event, identifier) {
+    const rules = this.rules;
     const { type, matrices, updateMatrix } = this.context;
 
     let rule = rules[type];
@@ -209,7 +203,7 @@ export default class Matrices extends Component {
       let columns = matrices[matrix].columns;
       let classes = matrixID + ' btn btn-secondary'
       outputTmp = (
-        <F key={key + i}>
+        <Fragment key={key + i}>
           <DropdownBtn id={matrixID} label='matrix' />
           <div className='dropdown-container'>
             <div className='btn-group centre'>
@@ -223,7 +217,7 @@ export default class Matrices extends Component {
               <button type="button" className={classes} onClick={(event) => {this.handleIncrement(event, 'column')}}>+</button>
             </div>
           </div>
-        </F>
+        </Fragment>
       )
       outputHold.push(outputTmp);
       i++;
@@ -241,9 +235,9 @@ export default class Matrices extends Component {
 
   render() {
     return (
-      <>
+      <Fragment>
         {this.listMatrices()}
-      </>
+      </Fragment>
     )
   }
 }

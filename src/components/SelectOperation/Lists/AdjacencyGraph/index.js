@@ -1,15 +1,7 @@
-import React, { Component, useState, useEffect, useContext } from 'react';
+import React, { Component, Fragment, useState, useEffect, useContext } from 'react';
 
 import { OperationContext } from '@OperationContext';
 import DropdownBtn from '@utilities/DropdownBtn';
-
-class F extends Component {
-  render() {
-    return (
-      <>{this.props.children}</>
-    )
-  }
-}
 
 export default class AdjacencyGraph extends Component {
   static contextType = OperationContext;
@@ -39,7 +31,7 @@ export default class AdjacencyGraph extends Component {
   handleDecrement(event) {
     const { nodes: nodesRaw, deleteNode } = this.context;
 
-    let nodes = {}
+    let nodes = {};
 
     for (let node in nodesRaw) {
       if (node.includes('node')) {
@@ -60,7 +52,7 @@ export default class AdjacencyGraph extends Component {
   handleIncrement(event) {
     const { nodes: nodesRaw, updateNode } = this.context;
 
-    let nodes = {}
+    let nodes = {};
 
     for (let node in nodesRaw) {
       if (node.includes('node')) {
@@ -141,7 +133,7 @@ export default class AdjacencyGraph extends Component {
 
       let classes = `${nodeID} btn btn-secondary`;
       outputTmp = (
-        <F key={key + i}>
+        <Fragment key={key + i}>
           <DropdownBtn id={nodeID} label='node' />
           <div className='dropdown-container'>
             <div className='nodeControl-Label'>
@@ -154,7 +146,7 @@ export default class AdjacencyGraph extends Component {
               />
             </div>
           </div>
-        </F>
+        </Fragment>
       );
       outputHold.push(outputTmp);
       i++;
@@ -172,9 +164,9 @@ export default class AdjacencyGraph extends Component {
 
   render() {
     return (
-      <>
+      <Fragment>
         {this.listAdjacencyGraph()}
-      </>
+      </Fragment>
     )
   }
 }

@@ -14,17 +14,17 @@ export default class DisplayMatrix extends Component {
 
     for (let r = 0; r < rows; r++) {
       for (let col = 0; col < columns; col++) {
-        let key = r + '-' + col;
+        let key = `${r}-${col}`;
         for (let c = 0; c < columns; c++) {
-          let key = r + '~' + col + '~' + c;
+          let key = `${r}~${col}~${c}`;
           displayTmp = (
             <Entry key={key + 1}>{matrix[r][c]}</Entry>
-          )
+          );
           displayArray.push(displayTmp);
 
           displayTmp = (
             <Entry key={key + 2}>{separator}</Entry>
-          )
+          );
           displayArray.push(displayTmp);
 
           displayTmp = (
@@ -46,12 +46,12 @@ export default class DisplayMatrix extends Component {
 
             displayTmp = (
               <Entry key={key + 6}>{matrix[r][c + 1]}</Entry>
-            )
+            );
             displayArray.push(displayTmp);
 
             displayTmp = (
               <Entry key={key + 7}>{separator}</Entry>
-            )
+            );
             displayArray.push(displayTmp);
 
             displayTmp = (
@@ -63,13 +63,13 @@ export default class DisplayMatrix extends Component {
         if (col != columns - 1) {
           displayTmp = (
             <Entry key={key + 9}>&</Entry>
-          )
+          );
           displayArray.push(displayTmp);
         }
       }
       displayTmp = (
-        <Entry key={r + '_0'}>\\</Entry>
-      )
+        <Entry key={`${r}_0`}>\\</Entry>
+      );
       displayArray.push(displayTmp);
     }
 
@@ -83,20 +83,20 @@ export default class DisplayMatrix extends Component {
 
     for (let r = 0; r < rows; r++) {
       for (let col = 0; col < columns - 1; col++) {
-        let key = r + '-' + col;
+        let key = `${r}-${col}`;
         for (let c = 0; c < columns; c++) {
-          let key = r + '~' + col + '~' + c;
+          let key = `${r}~${col}~${c}`;
           if (c != 0 && Math.sign(matrix[r][c]) == -1) {
             displayArray.pop();
           }
           displayTmp = (
             <Entry key={key + 1}>{matrix[r][c]}</Entry>
-          )
+          );
           displayArray.push(displayTmp);
 
           displayTmp = (
             <Entry key={key + 2}>{separator}</Entry>
-          )
+          );
           displayArray.push(displayTmp);
 
           displayTmp = (
@@ -113,8 +113,8 @@ export default class DisplayMatrix extends Component {
         }
       }
       displayTmp = (
-        <Entry key={r + '_0'}>\\</Entry>
-      )
+        <Entry key={`${r}_0`}>\\</Entry>
+      );
       displayArray.push(displayTmp);
     }
 
@@ -128,10 +128,10 @@ export default class DisplayMatrix extends Component {
 
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < columns; c++) {
-        let key = r + '-' + c;
+        let key = `${r}-${c}`;
         displayTmp = (
           <Entry key={key}>{matrix[r][c]}</Entry>
-        )
+        );
         displayArray.push(displayTmp);
         if (typeof this.props.separator !== 'undefined') {
           let { separator } = this.props;
@@ -139,7 +139,7 @@ export default class DisplayMatrix extends Component {
             let { matrix2 } = this.props;
             displayTmp = (
               <Entry key={key + 2}>{separator}</Entry>
-            )
+            );
             displayArray.push(displayTmp);
             displayTmp = (
               <Entry key={key + 3}>{matrix2[r][c]}</Entry>
@@ -150,7 +150,7 @@ export default class DisplayMatrix extends Component {
             let { scalar } = this.props;
             displayTmp = (
               <Entry key={key + 2}>{separator}</Entry>
-            )
+            );
             displayArray.push(displayTmp);
             displayTmp = (
               <Entry key={key + 3}>{scalar}</Entry>
@@ -162,13 +162,13 @@ export default class DisplayMatrix extends Component {
         if ( c == columns - 1) {
           displayTmp = (
             <Entry key={key + 1}>\\</Entry>
-          )
+          );
           displayArray.push(displayTmp);
         }
         else {
           displayTmp = (
             <Entry key={key + 5}>&</Entry>
-          )
+          );
           displayArray.push(displayTmp);
         }
       }

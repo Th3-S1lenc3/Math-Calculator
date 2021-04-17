@@ -19,18 +19,17 @@ export default class SubtractMatrices extends Component {
       let columns = matrices[matrix].columns;
       let matrixID = matrix.split('_')[1];
 
-      let key = i + '-';
+      let key = `${i}-`;
 
       outputTmp = (
         <Matrix key={key + 1} id={matrixID} rows={rows} cols={columns} />
-      )
-
+      );
       output.push(outputTmp);
 
       if (i != matrixCount) {
         outputTmp = (
           <p key={key + 2} className="operator">-</p>
-        )
+        );
         output.push(outputTmp);
       }
 

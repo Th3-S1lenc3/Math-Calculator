@@ -21,11 +21,11 @@ export default class ScalarDivision extends Component {
     let matrices = getMatrices();
     let matricesOrignal = copy(matrices);
     let scalar = getScalar();
-    let matrix = copy(matrices[0]);;
+    let matrix = copy(matrices[0]);
     const rows = matrix.length;
     const columns = matrix[0].length;
     let newMatrix = newExecuteMatrix(rows, columns);
-    let key = 0 + '-';
+    let key = '0-';
 
     let output = [];
     let outputTmp;
@@ -37,7 +37,7 @@ export default class ScalarDivision extends Component {
     if (showSteps) {
       outputTmp = (
         <p key={key + 1}>$$Convert\ to\ multiplication:$$</p>
-      )
+      );
       output.push(outputTmp);
 
       outputTmp = (
@@ -47,21 +47,21 @@ export default class ScalarDivision extends Component {
           {ifDecimalC2Fraction(scalar)} \cdot
           <DisplayMatrix rows={rows} columns={columns} matrix={matrix} />
         $$</p>
-      )
+      );
       output.push(outputTmp);
     }
 
 
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < columns; c++) {
-        newMatrix[r][c] = matrix[r][c] * scalar
+        newMatrix[r][c] = matrix[r][c] * scalar;
       }
     }
 
     if (showSteps) {
       outputTmp = (
         <p key={key + 3}>$$Multiply\ each\ element\ of\ the\ matrix\ by\ the\ scalar: $$</p>
-      )
+      );
       output.push(outputTmp);
       outputTmp = (
         <p key={key + 4}>$$
@@ -70,13 +70,13 @@ export default class ScalarDivision extends Component {
           <DisplayMatrix rows={rows} columns={columns} matrix={matrix} separator={'\\cdot'} scalar={scalar} /> =
           <DisplayMatrix rows={rows} columns={columns} matrix={newMatrix} />
         $$</p>
-      )
+      );
       output.push(outputTmp);
     }
 
     outputTmp = (
       <p key={key + 5}>$$Result: $$</p>
-    )
+    );
     output.push(outputTmp);
 
     let outputHold = [];
@@ -87,8 +87,7 @@ export default class ScalarDivision extends Component {
         {ifDecimalC2Fraction(scalarOriginal)} =
         <DisplayMatrix rows={rows} columns={columns} matrix={newMatrix} />
       $$</p>
-    )
-
+    );
     outputHold.push(outputTmp);
 
     outputTmp = (
@@ -96,7 +95,6 @@ export default class ScalarDivision extends Component {
         {outputHold}
       </div>
     );
-
     output.push(outputTmp);
 
     return output;

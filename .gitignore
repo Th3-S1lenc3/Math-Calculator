@@ -93,3 +93,6 @@ dist/
 
 # React-build
 build/
+
+# Custom
+*.sh

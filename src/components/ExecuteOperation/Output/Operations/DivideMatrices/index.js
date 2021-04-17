@@ -42,11 +42,11 @@ export default class DivideMatrices extends Component {
     if (showSteps) {
       outputTmp = (
         <p key={1}>$$Convert\ to\ multiplication: $$</p>
-      )
+      );
       output.push(outputTmp);
 
       for (let j = 1; j <= matrices.length; j++) {
-        var key = j + '=';
+        var key = `${j}=`;
         let matrix = matricesOrignal[j-1];
 
         if (j != matricesOrignal.length) {
@@ -54,7 +54,7 @@ export default class DivideMatrices extends Component {
             <p key={key + 1}>\(
               <DisplayMatrix rows={rows} columns={columns} matrix={matrix} /> \div
             \)</p>
-          )
+          );
           outputHold.push(outputTmp);
         }
         else {
@@ -62,13 +62,13 @@ export default class DivideMatrices extends Component {
             <p key={key + 2}>\(
               <DisplayMatrix rows={rows} columns={columns} matrix={matrix} /> =
             \)</p>
-          )
+          );
           outputHold.push(outputTmp);
         }
       }
 
       for (let k = 1; k <= matrices.length; k++) {
-        var key = k + '+';
+        var key = `${k}+`;
         let matrix = matricesOrignal[k-1];
 
         if (k == 1) {
@@ -76,7 +76,7 @@ export default class DivideMatrices extends Component {
             <p key={key + 1}>\(
               <DisplayMatrix rows={rows} columns={columns} matrix={matrix} /> \cdot
             \)</p>
-          )
+          );
           outputHold.push(outputTmp);
         }
         else if (k != matricesOrignal.length) {
@@ -84,7 +84,7 @@ export default class DivideMatrices extends Component {
             <p key={key + 1}>\(
               <DisplayMatrix rows={rows} columns={columns} matrix={matrix} />^{`{-1}`} \cdot
             \)</p>
-          )
+          );
           outputHold.push(outputTmp);
         }
         else {
@@ -92,7 +92,7 @@ export default class DivideMatrices extends Component {
             <p key={key + 2}>\(
               <DisplayMatrix rows={rows} columns={columns} matrix={matrix} />^{`{-1}`}
             \)</p>
-          )
+          );
           outputHold.push(outputTmp);
         }
       }
@@ -102,7 +102,6 @@ export default class DivideMatrices extends Component {
           {outputHold}
         </div>
       );
-
       output.push(outputTmp);
 
       outputTmp = (
@@ -114,7 +113,7 @@ export default class DivideMatrices extends Component {
     let detCheck = matricesOrignal.every((matrix, i) => {
       let determinant = 1;
       if (i != 0) {
-        let key = i + '~'
+        let key = `${i}~`;
 
         determinant = getDeterminant(matrix);
 
@@ -123,7 +122,7 @@ export default class DivideMatrices extends Component {
             <p key={key + 0}>$$
               A = <DisplayMatrix rows={rows} columns={columns} matrix={matrix}/>
             $$</p>
-          )
+          );
           output.push(outputTmp);
 
           outputTmp = (
@@ -132,7 +131,7 @@ export default class DivideMatrices extends Component {
               <DisplayMatrix rows={rows} columns={columns} matrix={matrix} type={'vmatrix'}/> =
               {ifDecimalC2Fraction(determinant)}
             $$</p>
-          )
+          );
           output.push(outputTmp);
         }
       }
@@ -140,7 +139,7 @@ export default class DivideMatrices extends Component {
       if (determinant == 0) {
         outputTmp = (
           <p key={key + 2}>$$The\ determinant\ of\ matrix\ {i + 1}\ is\ 0\ therefore\ the\ inverse\ cannot\ be\ determined.$$</p>
-        )
+        );
         output.push(outputTmp);
       }
 
@@ -153,12 +152,12 @@ export default class DivideMatrices extends Component {
     else if (showSteps){
       outputTmp = (
         <p key={4}>$$Determinants\ exist\ for\ all\ matrices.$$</p>
-      )
+      );
       output.push(outputTmp);
     }
 
     newMatrix = matrices.reduce((resultantMatrix, matrix, i) => {
-      let key = i + '-';
+      let key = `${i}-`;
       let numberedMatrix = ordinal_suffix_of(i+1);
       let matrix1 = copy(resultantMatrix);
       let rows = matrix.length;
@@ -220,7 +219,7 @@ export default class DivideMatrices extends Component {
       if (showSteps) {
         outputTmp = (
           <p key={key + 1}>$$Invert\ the\ {numberedMatrix}\ matrix:$$</p>
-        )
+        );
         output.push(outputTmp);
 
         outputTmp = (
@@ -233,7 +232,7 @@ export default class DivideMatrices extends Component {
             \xrightarrow{`{\\text{Extract Inverted Matrix}}`}
             <DisplayMatrix rows={rows} columns={columns} matrix={matrix} />
           $$</p>
-        )
+        );
         output.push(outputTmp);
       }
 
@@ -253,13 +252,13 @@ export default class DivideMatrices extends Component {
         if (i == 1) {
           outputTmp = (
             <p key={key + 3}>$$Multiply\ the\ rows\ of\ the\ {ordinal_suffix_of(1)}\ matrix\ by\ the\ columns\ of\ the\ {ordinal_suffix_of(2)}\ matrix: $$</p>
-          )
+          );
           output.push(outputTmp);
         }
         else {
           outputTmp = (
             <p key={key + 3}>$$Multiply\ the\ rows\ of\ the\ resultant\ matrix\ by\ the\ columns\ of\ the\ {numberedMatrix}\ matrix: $$</p>
-          )
+          );
           output.push(outputTmp);
         }
 
@@ -279,13 +278,13 @@ export default class DivideMatrices extends Component {
 
     outputTmp = (
       <p key={5}>$$Result: $$</p>
-    )
+    );
     output.push(outputTmp);
 
     outputHold = [];
 
     for (let l = 1; l <= matricesOrignal.length; l++) {
-      var key = l + '_';
+      var key = `${l}_`;
       let matrix = matricesOrignal[l-1];
 
       if (l != matricesOrignal.length) {
@@ -293,7 +292,7 @@ export default class DivideMatrices extends Component {
           <p key={key + 1}>\(
             <DisplayMatrix rows={rows} columns={columns} matrix={matrix} /> \div
           \)</p>
-        )
+        );
         outputHold.push(outputTmp);
       }
       else {
@@ -302,7 +301,7 @@ export default class DivideMatrices extends Component {
             <DisplayMatrix rows={rows} columns={columns} matrix={matrix} /> =
             <DisplayMatrix rows={rows} columns={columns} matrix={newMatrix} />
           \)</p>
-        )
+        );
         outputHold.push(outputTmp);
       }
     }
@@ -312,7 +311,6 @@ export default class DivideMatrices extends Component {
         {outputHold}
       </div>
     );
-
     output.push(outputTmp);
 
     return output;
