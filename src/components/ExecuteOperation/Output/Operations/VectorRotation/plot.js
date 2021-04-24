@@ -34,7 +34,7 @@ export default class PlotVectorRotation extends Component {
     return newMatrix;
   }
 
-  rotationMatrix_2D(theta) {
+  calcRotationMatrix(theta) {
     const { cos, sin } = Math;
     let rotationMatrix = newExecuteMatrix(2,2);
 
@@ -46,49 +46,6 @@ export default class PlotVectorRotation extends Component {
     return rotationMatrix;
   }
 
-  rotationMatrix_3D(theta) {
-    const { cos, sin } = Math;
-    let rotationMatrix_X = newExecuteMatrix(3,3);
-    let rotationMatrix_Y = newExecuteMatrix(3,3);
-    let rotationMatrix_Z = newExecuteMatrix(3,3);
-
-    rotationMatrix_X[0][0] = 1;
-    rotationMatrix_X[1][1] = cos(theta);
-    rotationMatrix_X[1][2] = -sin(theta);
-    rotationMatrix_X[2][1] = sin(theta);
-    rotationMatrix_X[2][2] = cos(theta);
-
-    rotationMatrix_Y[0][0] = cos(theta);
-    rotationMatrix_Y[0][2] = sin(theta);
-    rotationMatrix_Y[1][1] = 1;
-    rotationMatrix_Y[2][0] = -sin(theta);
-    rotationMatrix_Y[2][3] = cos(theta);
-
-    rotationMatrix_Z[0][0] = cos(theta);
-    rotationMatrix_Z[0][1] = -sin(theta);
-    rotationMatrix_Z[1][0] = sin(theta);
-    rotationMatrix_Z[1][1] = cos(theta);
-    rotationMatrix_Z[2][2] = 1;
-
-    let rotationMatrix = this.multiplyMatrices(
-      this.multiplyMatrices(rotationMatrix_X, rotationMatrix_Y),
-      rotationMatrix_Z
-    );
-
-    return rotationMatrix;
-  }
-
-  calcRotationMatrix(dimensions, theta) {
-    switch (dimensions) {
-      case 2:
-        return this.rotationMatrix_2D(theta);
-        break;
-      case 3:
-        return this.rotationMatrix_3D(theta);
-        break;
-    }
-  }
-
   plotVectorRotation() {
     const { showSteps, dimensions: {count: dimensions}, setContext } = this.context;
     let vector = getMatrices()[0];
@@ -97,7 +54,7 @@ export default class PlotVectorRotation extends Component {
     let columns = vector[0].length;
     let newMatrix = newExecuteMatrix(rows, columns);
 
-    let rotationMatrix = this.calcRotationMatrix(vector, angle);
+    let rotationMatrix = this.calcRotationMatrix(angle);
 
     let transformedVector = this.multiplyMatrices(rotationMatrix, vector);
 

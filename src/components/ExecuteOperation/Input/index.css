@@ -29,6 +29,10 @@
   flex-flow: wrap;
 }
 
+.diceInput {
+  float: none !important;
+}
+
 .transformInput, .thetaInput {
   grid-row: 1;
   grid-column: 2;

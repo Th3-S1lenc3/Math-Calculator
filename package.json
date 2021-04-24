@@ -7,7 +7,7 @@
   },
   "private": true,
   "license": "MIT",
-  "version": "2.1.0-alpha",
+  "version": "2.1.0",
   "build": {
     "appId": "com.Th3_S1lenc3.math-calculator",
     "files": [

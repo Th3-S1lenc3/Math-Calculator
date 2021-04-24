@@ -28,6 +28,7 @@ export default class SelectOperationContainer extends Component {
 
   render() {
     const rules = this.rules;
+    const lists = this.lists;
     const classes = 'select-operation-container navbar navbar-expand-md navbar-dark bg-dark fixed-left';
     const { setContext, showMatrixOperations, type, showListInfo } = this.context;
     let showAttributes;

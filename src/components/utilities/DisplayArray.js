@@ -38,6 +38,7 @@ export default class DisplayArray extends Component {
 
   render() {
     let { splitPoint, separator } = this.props;
+    let arrayType;
 
     for (let i = 0; i < splitPoint * 2; i++) {
       arrayType += 'r';

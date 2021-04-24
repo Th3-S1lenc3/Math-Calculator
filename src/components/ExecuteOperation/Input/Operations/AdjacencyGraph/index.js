@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { OperationContext } from '@OperationContext';
 import Span from '@utilities/Span';
 
+const Space = () => <>&nbsp;</>;
+
 export default class AdjacencyGraph extends Component {
   static contextType = OperationContext;
 
@@ -26,9 +28,9 @@ export default class AdjacencyGraph extends Component {
 
     return (
         <div className={classes}>
-          Calculate the shortest path between Node:{' '}
-          <Span className="node" type='alphanumeric' placeholder={placeholder_A} />{' '}
-          and Node:{' '}
+          Calculate the shortest path between Node:<Space />
+          <Span className="node" type='alphanumeric' placeholder={placeholder_A} /><Space />
+          and Node:<Space />
           <Span className="node" type='alphanumeric' placeholder={placeholder_B} />
         </div>
     )

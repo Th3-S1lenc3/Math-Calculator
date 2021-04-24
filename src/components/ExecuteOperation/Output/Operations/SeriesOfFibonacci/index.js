@@ -34,24 +34,10 @@ export default class SeriesOfFibonacci extends Component {
       return sum += nextNumber;
     });
 
-    outputTmp = (
-      <p key={key + -1}>$$
-        Establish\ Bounds:
-      $$</p>
-    );
-    output.push(outputTmp);
-
-
-    outputTmp = (
-      <p key={key + 0}>$$
-        x = {x}\ \&\ y = {y}
-      $$</p>
-    );
-    output.push(outputTmp);
 
     outputTmp = (
       <p key={key + 2}>$$
-        Calculate\ the\ set\ of\ Fibonacci\ numbers\ between\ x\ \&\ y:
+        Calculate\ the\ set\ of\ Fibonacci\ numbers\ between\ {x}\ \&\ {y}:
       $$</p>
     );
     output.push(outputTmp);
@@ -67,14 +53,14 @@ export default class SeriesOfFibonacci extends Component {
 
     outputTmp = (
       <p key={key + 4}>$$
-        F_{`{n}`} \to {`\\{ n | n \\in \\Bbb{R}, x \\le n \\le y\\}`} = {`\\{${fibonacciNumbers}\\}`}
+        {`\\{ F_{n} | n \\in \\Bbb{R}, ${x} \\le n \\le ${y}\\}`} = {`\\{${fibonacciNumbers}\\}`}
       $$</p>
     );
     output.push(outputTmp);
 
     outputTmp = (
       <p key={key + 5}>$$
-        Calculate\ the\ series\ of\ Fibonacci\ numbers\ between\ x\ \&\ y:
+        Calculate\ the\ series\ of\ Fibonacci\ numbers\ between\ {x}\ \&\ {y}:
       $$</p>
     )
     output.push(outputTmp);
@@ -82,7 +68,7 @@ export default class SeriesOfFibonacci extends Component {
     if ((y - x) > 1 && showSteps) {
       outputTmp = (
         <p key={key+7}>$$
-          \sum_{`{n=x}`}^{`{y}`} F_{`{n}`} = F_{`{n}`} + F_{`{n+1}`} + \cdots + F_{`{n+y}`}
+          \sum_{`{n=x}`}^{`{y}`} F_{`{n}`} = F_{`{n}`} + F_{`{n+1}`} + \cdots + F_{`{y}`}
         $$</p>
       );
       output.push(outputTmp);
@@ -109,7 +95,7 @@ export default class SeriesOfFibonacci extends Component {
 
       outputTmp = (
         <p key={key + 9}>$$
-          \sum_{`{n=x}`}^{`{y}`} F_{`{n}`} = {outputHold}
+          \sum_{`{n=${x}}`}^{`{${y}}`} F_{`{n}`} = {outputHold}
         $$</p>
       );
       output.push(outputTmp);
@@ -117,7 +103,7 @@ export default class SeriesOfFibonacci extends Component {
 
     outputTmp = (
       <p key={key + 10}>$$
-        \sum_{`{n=x}`}^{`{y}`} F_{`{n}`} = {sumOfFibonacciNumbers}
+        \sum_{`{n=${x}}`}^{`{${y}}`} F_{`{n}`} = {sumOfFibonacciNumbers}
       $$</p>
     );
     output.push(outputTmp);
