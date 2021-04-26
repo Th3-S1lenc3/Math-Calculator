@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { MathJaxContext } from 'better-react-mathjax';
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import './dark-theme-bootstrap.min.css';
 import './index.css';
 
 import Main from '@components';
